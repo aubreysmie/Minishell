@@ -6,7 +6,7 @@
 #    By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/27 21:02:35 by ekhaled           #+#    #+#              #
-#    Updated: 2023/12/29 02:10:02 by ekhaled          ###   ########.fr        #
+#    Updated: 2023/12/29 02:17:52 by ekhaled          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,10 @@ NAME			:=	minishell
 SRC_DIR			:=	sources
 OBJ_DIR			:=	objects
 
+SRCS_SESSION	:=	init_session.c
 SRCS_MAIN		:=	main.c
-SRCS			:=	${SRCS_MAIN}
+SRCS			:=	${addprefix session/, ${SRCS_SESSION}} \
+					${SRCS_MAIN}
 
 SRCS			:=	${SRCS:%=${SRC_DIR}/%}
 OBJS			:=	${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
