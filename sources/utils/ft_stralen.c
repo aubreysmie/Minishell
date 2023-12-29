@@ -6,11 +6,11 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 19:28:11 by ekhaled           #+#    #+#             */
-/*   Updated: 2023/12/29 19:36:19 by ekhaled          ###   ########.fr       */
+/*   Updated: 2023/12/29 19:40:22 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include <stlib.h>
 
 #include "utils.h"
 
