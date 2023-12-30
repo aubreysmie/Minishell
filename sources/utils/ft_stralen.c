@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 19:28:11 by ekhaled           #+#    #+#             */
-/*   Updated: 2023/12/29 19:47:38 by ekhaled          ###   ########.fr       */
+/*   Updated: 2023/12/30 02:18:17 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 int	ft_stralen(char **str_array)
 {
-	int	i;
+	unsigned int	i;
 
 	if (str_array == NULL)
 		return (-1);

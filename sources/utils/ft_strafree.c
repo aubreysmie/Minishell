@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 20:10:13 by ekhaled           #+#    #+#             */
-/*   Updated: 2023/12/29 20:12:40 by ekhaled          ###   ########.fr       */
+/*   Updated: 2023/12/30 02:18:11 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 void	ft_strafree(char **str_array)
 {
-	int	i;
+	unsigned int	i;
 
 	i = 0;
 	while (str_array[i])

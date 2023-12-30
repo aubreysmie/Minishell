@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 19:56:24 by ekhaled           #+#    #+#             */
-/*   Updated: 2023/12/29 19:57:44 by ekhaled          ###   ########.fr       */
+/*   Updated: 2023/12/30 02:18:23 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 int	ft_strlen(char *str)
 {
-	int	i;
+	unsigned int	i;
 
 	i = 0;
 	if (str == NULL)

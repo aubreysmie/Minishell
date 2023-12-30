@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 17:18:05 by ekhaled           #+#    #+#             */
-/*   Updated: 2023/12/29 20:16:11 by ekhaled          ###   ########.fr       */
+/*   Updated: 2023/12/30 02:18:05 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 
 char	**ft_stradup(char **str_array)
 {
-	char	**dup;
-	uint	i;
-	uint	j;
+	char			**dup;
+	unsigned int	i;
+	unsigned int	j;
 
 	if (str_array == NULL)
 		return (NULL);
