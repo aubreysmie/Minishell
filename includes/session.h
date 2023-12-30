@@ -6,13 +6,14 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 20:53:10 by ekhaled           #+#    #+#             */
-/*   Updated: 2023/12/29 02:50:17 by ekhaled          ###   ########.fr       */
+/*   Updated: 2023/12/30 03:49:59 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SESSION_H
 # define SESSION_H
 
+# include <unistd.h>
 # include <stdbool.h>
 # include <stdint.h>
 # include <stdlib.h>
@@ -25,6 +26,8 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
+# include "utils.h"
+
 typedef struct s_session
 {
 	char		**env;
@@ -34,8 +37,8 @@ typedef struct s_session
 }	t_session;
 
 bool	init_session(t_session *session, char **envp);
-bool	destroy_session(t_session *session);
 
 bool	get_next_line(char **line, int fd);
+void	destroy_session(t_session *session);
 
 #endif
