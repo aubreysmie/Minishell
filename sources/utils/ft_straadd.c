@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 01:48:00 by ekhaled           #+#    #+#             */
-/*   Updated: 2023/12/30 02:57:05 by ekhaled          ###   ########.fr       */
+/*   Updated: 2023/12/30 16:29:33 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ bool	ft_straadd(char ***str_array_p, char *new_str)
 	unsigned int		i;
 
 	i = 0;
+	if (!str_array_p)
+		return (0);
 	if (!(*str_array_p))
 		return (ft_straaddnull(str_array_p, new_str));
 	new_str_array = malloc((ft_stralen(*str_array_p) + 2) * sizeof(char *));
