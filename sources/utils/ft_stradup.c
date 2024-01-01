@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 17:18:05 by ekhaled           #+#    #+#             */
-/*   Updated: 2023/12/30 02:18:05 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/01 17:30:47 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,20 @@
 
 #include "utils.h"
 
-char	**ft_stradup(char **str_array)
+static char	**ft_stradupfill(char **dup, char **str_array)
 {
-	char			**dup;
 	unsigned int	i;
 	unsigned int	j;
 
-	if (str_array == NULL)
-		return (NULL);
 	i = 0;
-	dup = malloc((ft_stralen(str_array) + 1) * sizeof(char *));
 	while (str_array[i])
 	{
 		dup[i] = malloc((ft_strlen(str_array[i]) + 1) * sizeof(char));
+		if (!dup[i])
+		{
+			ft_strafree(dup);
+			return (NULL);
+		}
 		j = 0;
 		while (str_array[i][j])
 		{
@@ -38,4 +39,16 @@ char	**ft_stradup(char **str_array)
 	}
 	dup[i] = NULL;
 	return (dup);
+}
+
+char	**ft_stradup(char **str_array)
+{
+	char			**dup;
+
+	if (str_array == NULL)
+		return (NULL);
+	dup = malloc((ft_stralen(str_array) + 1) * sizeof(char *));
+	if (!dup)
+		return (NULL);
+	return (ft_stradupfill(dup, str_array));
 }
