@@ -6,13 +6,11 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 20:10:13 by ekhaled           #+#    #+#             */
-/*   Updated: 2023/12/30 02:18:11 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/01 18:46:45 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-
-#include "utils.h"
 
 void	ft_strafree(char **str_array)
 {
