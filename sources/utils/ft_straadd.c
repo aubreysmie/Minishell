@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 01:48:00 by ekhaled           #+#    #+#             */
-/*   Updated: 2023/12/30 16:29:33 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/01 17:18:59 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 #include "utils.h"
 
-bool	ft_straaddnull(char ***str_array_p, char *new_str)
+static bool	ft_straaddnull(char ***str_array_p, char *new_str)
 {
 	char				**new_str_array;
 
