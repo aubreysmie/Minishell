@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 17:40:49 by ekhaled           #+#    #+#             */
-/*   Updated: 2023/12/30 03:06:58 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/01 16:53:42 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stdbool.h>
 
-int		ft_strlen(char *str);
+int		ft_strlen(const char *str);
 int		ft_stralen(char **str_array);
 char	**ft_stradup(char **str_array);
 void	ft_strafree(char **str_array);

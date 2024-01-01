@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 19:56:24 by ekhaled           #+#    #+#             */
-/*   Updated: 2023/12/30 02:18:23 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/01 16:52:22 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include "utils.h"
 
-int	ft_strlen(char *str)
+int	ft_strlen(const char *str)
 {
 	unsigned int	i;
 
