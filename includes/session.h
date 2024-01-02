@@ -37,8 +37,6 @@ typedef struct s_session
 }	t_session;
 
 bool	init_session(t_session *session, char **envp);
-
-bool	get_next_line(char **line, int fd);
 void	destroy_session(t_session *session);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 21:19:17 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/02 05:42:16 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/02 05:47:22 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "utils.h"
 
 #ifndef BUFFER_SIZE
-# define BUFFER_SIZE 100
+# define BUFFER_SIZE 35
 #endif
 
 static bool	update_buffer(char *dest, char *src, int start_index, int end_index)
