@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 18:37:30 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/02 06:08:13 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/02 06:45:19 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ bool	init_session(t_session *session, char **envp)
 	if (!restore_hist())
 		return (0);
 	session->env = envp;
+	session->history = NULL;
 	session->last_cmd_status = 0;
 	session->should_exit = false;
 	return (1);
