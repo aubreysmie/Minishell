@@ -6,7 +6,7 @@
 #    By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/27 21:02:35 by ekhaled           #+#    #+#              #
-#    Updated: 2023/12/29 02:17:52 by ekhaled          ###   ########.fr        #
+#    Updated: 2024/01/02 05:54:58 by ekhaled          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,22 @@ NAME			:=	minishell
 SRC_DIR			:=	sources
 OBJ_DIR			:=	objects
 
-SRCS_SESSION	:=	init_session.c
+SRCS_UTILS		:=	ft_calloc.c \
+					ft_stradup.c \
+					ft_strafree.c \
+					ft_stralen.c \
+					ft_strchri.c \
+					ft_strcpy.c \
+					ft_strdup.c \
+					ft_strjoin.c \
+					ft_strlen.c \
+					ft_substrrange.c \
+					get_next_line.c
+SRCS_SESSION	:=	init_session.c \
+					destroy_session.c
 SRCS_MAIN		:=	main.c
-SRCS			:=	${addprefix session/, ${SRCS_SESSION}} \
+SRCS			:=	${addprefix utils/, ${SRCS_UTILS}} \
+					${addprefix session/, ${SRCS_SESSION}} \
 					${SRCS_MAIN}
 
 SRCS			:=	${SRCS:%=${SRC_DIR}/%}

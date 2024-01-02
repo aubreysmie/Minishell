@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 18:37:30 by ekhaled           #+#    #+#             */
-/*   Updated: 2023/12/29 02:50:13 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/02 06:08:13 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,20 @@ bool	restore_hist(void)
 	int		fd;
 	char	*line;
 
-	fd = open(".minishell_history", O_RDONLY | O_CREAT, 666);
+	fd = open(".minishell_history", O_RDONLY);
 	if (fd == -1)
 		return (1);
 	if (!get_next_line(&line, fd))
 		return (0);
 	while (line)
 	{
+		line[ft_strlen(line) - 1] = 0;
 		add_history(line);
 		free(line);
 		if (!get_next_line(&line, fd))
 			return (false);
 	}
+	free(line);
 	return (1);
 }
 
