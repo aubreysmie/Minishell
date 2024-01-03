@@ -14,6 +14,15 @@
 # define PARSING_H
 
 bool	run_repl(t_session *session);
+# include <stdint.h>
+# include <stdbool.h>
+
+typedef struct s_lstr
+{
+	char		*str;
+	uint32_t	len;
+}	t_lstr;
+
 
 bool	is_word(t_lstr word_candidate);
 bool	is_name(t_lstr name_candidate);
