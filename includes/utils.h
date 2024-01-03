@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 17:40:49 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/01 19:44:33 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/02 23:08:59 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 # include <stdbool.h>
 
 void	*ft_calloc(size_t nmemb, size_t size);
+int		ft_isalpha(char c);
+int		ft_isdigit(char c);
+int		ft_isalnum(char c);
+
 
 int		ft_strlen(const char *str);
 char	*ft_strjoin(const char *s1, const char *s2);
