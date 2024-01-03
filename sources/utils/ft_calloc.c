@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 17:41:23 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/01 18:45:36 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/03 16:22:39 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	size_t	res_size;
 	size_t	i;
 
-	if (!nmemb || !size || nmemb > SIZE_MAX / size)
+	if (!nmemb || !size)
+		return (malloc(0));
+	if (nmemb > SIZE_MAX / size)
 		return (NULL);
 	res_size = nmemb * size;
 	res = malloc(res_size);
