@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 17:40:49 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/04 04:54:52 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/04 05:45:31 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		ft_lstrcmp(t_lstr s1, t_lstr s2);
 int		ft_stralen(char **str_array);
 char	**ft_stradup(char **str_array);
 void	ft_strafree(char **str_array);
-bool	ft_straadd(char ***str_array_p, char *new_str);
+bool	ft_straadd(char ***str_array_p, char *str);
 
 bool	get_next_line(char **line, int fd);
 
