@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 22:01:27 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/03 23:57:22 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/04 04:18:06 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ int	export(char **argv, char ***env_p)
 		if (is_proper_arg(argv[i]))
 		{
 			if (ft_strchri(argv[i], '=') != -1)
-				ft_straadd(env_p, argv[i]);
+				if (!ft_straadd(env_p, ft_strdup(argv[i])))
+					return (-1);
 		}
 		else
 		{

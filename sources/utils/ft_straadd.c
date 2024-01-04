@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 01:48:00 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/01 17:18:59 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/04 04:16:47 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ bool	ft_straadd(char ***str_array_p, char *new_str)
 	unsigned int		i;
 
 	i = 0;
-	if (!str_array_p)
+	if (!str_array_p || !new_str);
 		return (0);
 	if (!(*str_array_p))
 		return (ft_straaddnull(str_array_p, new_str));
