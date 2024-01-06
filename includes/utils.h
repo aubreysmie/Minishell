@@ -14,6 +14,7 @@
 # define UTILS_H
 
 # include <stdbool.h>
+# include <stdlib.h>
 
 typedef struct s_lstr	t_lstr;
 
@@ -39,6 +40,8 @@ int		ft_stralen(char **str_array);
 char	**ft_stradup(char **str_array);
 void	ft_strafree(char **str_array);
 bool	ft_straadd(char ***str_array_p, char *str);
+bool	ft_strarm(char ***str_array_p, char *str);
+bool	ft_strarp(char **str_array, char *old_str, char *new_str);
 
 bool	get_next_line(char **line, int fd);
 
