@@ -6,12 +6,11 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 22:01:27 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/04 04:18:06 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/06 20:51:58 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
-#include <stdio.h>
 
 #include "utils.h"
 #include "parsing.h"
@@ -36,22 +35,46 @@ static bool	is_proper_arg(char *arg)
 	return (is_name(name_candidate) && is_word(word_candidate));
 }
 
+static bool	set_var(char *arg, char ***env_p)
+{
+	int		equal_index;
+	t_lstr	lnew_var;
+	t_lstr	lvar;
+	int		i;
+
+	equal_index = ft_strchri(arg, '=');
+	if (equal_index == -1)
+		return (1);
+	i = 0;
+	lnew_var = (t_lstr){arg, equal_index};
+	while ((*env_p)[i])
+	{
+		lvar = (t_lstr){(*env_p)[i], ft_strchri((*env_p)[i], '=')};
+		if (ft_lstrcmp(lnew_var, lvar) == 0)
+		{
+			free((*env_p)[i]);
+			if (!ft_strarp(*env_p, (*env_p)[i], ft_strdup(arg)))
+				return (0);
+			return (1);
+		}
+		i++;
+	}
+	return (ft_straadd(env_p, ft_strdup(arg)));
+}
+
 int	export(char **argv, char ***env_p)
 {
 	int	exit_status;
 	int	i;
 
-	if (ft_stralen(argv) == 1)
-		return (0);
 	exit_status = 0;
 	i = 1;
 	while (argv[i])
 	{
 		if (is_proper_arg(argv[i]))
 		{
-			if (ft_strchri(argv[i], '=') != -1)
-				if (!ft_straadd(env_p, ft_strdup(argv[i])))
-					return (-1);
+			if (!set_var(argv[i], env_p))
+				return (-1);
 		}
 		else
 		{
