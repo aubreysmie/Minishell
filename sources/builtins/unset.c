@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 04:31:04 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/06 00:32:09 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/06 19:00:55 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,11 @@ int	unset(char **argv, char ***env_p)
 	{
 		var = find_var(argv[i], *env_p);
 		if (var)
+		{
 			if (!ft_strarm(env_p, var))
 				return (-1);
+			free(var);
+		}
 		i++;
 	}
 	return (0);
