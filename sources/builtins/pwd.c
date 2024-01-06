@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins.h                                         :+:      :+:    :+:   */
+/*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/02 22:01:51 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/06 21:19:49 by ekhaled          ###   ########.fr       */
+/*   Created: 2024/01/06 21:12:56 by ekhaled           #+#    #+#             */
+/*   Updated: 2024/01/06 21:24:59 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUILTINS_H
-# define BUILTINS_H
+#include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
 
-int	export(char **argv, char ***env_p);
-int	env(char **argv, char ***env_p);
-int	unset(char **argv, char ***env_p);
-int	pwd(char **argv, char ***env_p);
+int	pwd(char **argv, char ***env_p)
+{
+	char	*path;
 
-#endif
+	(void) argv;
+	(void) env_p;
+	path = getcwd(NULL, 0);
+	if (!path)
+		return (-1);
+	printf("%s\n", path);
+	free(path);
+	return (0);
+}
