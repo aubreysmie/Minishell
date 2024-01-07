@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 22:01:27 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/06 20:51:58 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/07 19:01:55 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static bool	set_var(char *arg, char ***env_p)
 		return (1);
 	i = 0;
 	lnew_var = (t_lstr){arg, equal_index};
-	while ((*env_p)[i])
+	while (*env_p && (*env_p)[i])
 	{
 		lvar = (t_lstr){(*env_p)[i], ft_strchri((*env_p)[i], '=')};
 		if (ft_lstrcmp(lnew_var, lvar) == 0)
