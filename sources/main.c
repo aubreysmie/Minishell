@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 21:01:30 by ekhaled           #+#    #+#             */
-/*   Updated: 2023/12/30 03:50:26 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/07 19:34:44 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ int	main(int argc, char **argv, char **envp)
 		return (EXIT_FAILURE);
 	}
 	if (!init_session(&session, envp))
+	{
+		destroy_session(&session);
 		return (EXIT_FAILURE);
-	if (!run_repl(&session))
-		return (EXIT_FAILURE);
+	}
 	destroy_session(&session);
 	return (session.last_cmd_status);
 }
-
