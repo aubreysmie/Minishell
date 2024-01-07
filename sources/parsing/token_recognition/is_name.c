@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 23:27:25 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/03 19:26:16 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/07 17:48:20 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 bool	is_name(t_lstr name_candidate)
 {
-	int	i;
+	unsigned int	i;
 
 	if (!is_word(name_candidate))
 		return (0);
