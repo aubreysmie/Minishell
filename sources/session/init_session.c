@@ -6,13 +6,13 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 18:37:30 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/02 06:45:19 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/07 19:41:11 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "session.h"
 
-bool	restore_hist(void)
+static bool	restore_hist(void)
 {
 	int		fd;
 	char	*line;
@@ -28,7 +28,7 @@ bool	restore_hist(void)
 		add_history(line);
 		free(line);
 		if (!get_next_line(&line, fd))
-			return (false);
+			return (0);
 	}
 	free(line);
 	return (1);
