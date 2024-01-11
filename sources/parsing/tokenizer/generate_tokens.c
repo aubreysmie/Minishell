@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 23:19:00 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/11 13:07:02 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/11 22:26:37 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ bool	generate_tokens(t_cstr *input, t_token_queue **token_queue)
 
 	input->cursor = 0;
 	*token_queue = NULL;
-	while ((!input->cursor || input->str[input->cursor - 1])
-		&& input->str[input->cursor])
+	while (input->str[input->cursor])
 	{
 		if (!delimit_token(input, &token.content))
 		{
