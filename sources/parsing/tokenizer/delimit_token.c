@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:21:27 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/10 23:45:35 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/11 13:26:49 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,11 @@ t_lstr	get_token_lstr(t_quotes *quotes, unsigned int *i, t_cstr *input)
 				return ((t_lstr){input->str + input->cursor, *i});
 			(*i)++;
 		}
-		else if (!quotes->in && ft_charisin(input->str[input->cursor + *i], "\t "))
+		else if (!quotes->in && (*i == 1) && input->str[input->cursor + *i - 1] == '\n')
+			return ((t_lstr){input->str + input->cursor, *i});
+		else if (!quotes->in && (*i == 0) && input->str[input->cursor + *i] == '\n')
+			(*i)++;
+		else if (!quotes->in && ft_charisin(input->str[input->cursor + *i], "\t \n"))
 			return ((t_lstr){input->str + input->cursor, *i});
 		else
 			(*i)++;
