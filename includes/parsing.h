@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 14:28:10 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/11 00:50:30 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/11 22:42:02 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ t_token_queue	*ft_queuelast(t_token_queue *queue);
 void			ft_queuepush(t_token_queue **queue, t_token_queue *new);
 t_token_queue	*ft_queuepop(t_token_queue **queue);
 void			ft_queuefree(t_token_queue *queue);
+unsigned int	ft_queuelen(t_token_queue *queue);
 
 bool			is_word(t_lstr word_candidate);
 bool			is_operator(t_lstr op_candidate);
