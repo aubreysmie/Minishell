@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 14:28:10 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/10 17:24:44 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/11 00:50:30 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ bool			is_name(t_lstr name_candidate);
 
 bool			generate_tokens(t_cstr *input, t_token_queue **token_queue);
 bool			delimit_token(t_cstr *input, t_lstr *token_lstr);
+t_token			lstr_to_token(t_lstr lstr);
 
 bool			read_input(t_session *session, char **input_str);
 

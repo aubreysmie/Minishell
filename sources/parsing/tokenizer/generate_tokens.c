@@ -6,17 +6,29 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 23:19:00 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/10 23:43:21 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/11 13:07:02 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static bool	add_token_to_queue(t_token_queue **queue, t_token token)
+{
+	t_token_queue	*element;
+
+	element = ft_queuenew(token);
+	if (!element)
+		return (0);
+	ft_queuepush(queue, element);
+	return (1);
+}
 
 bool	generate_tokens(t_cstr *input, t_token_queue **token_queue)
 {
 	t_token	token;
 
 	input->cursor = 0;
+	*token_queue = NULL;
 	while ((!input->cursor || input->str[input->cursor - 1])
 		&& input->str[input->cursor])
 	{
@@ -31,6 +43,12 @@ bool	generate_tokens(t_cstr *input, t_token_queue **token_queue)
 			continue ;
 		}
 		input->cursor += token.content.len;
+		token = lstr_to_token(token.content);
+		if (!add_token_to_queue(token_queue, token))
+		{
+			ft_queuefree(*token_queue);
+			return (0);
+		}
 	}
 	return (1);
 }
