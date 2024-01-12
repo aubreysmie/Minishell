@@ -6,7 +6,7 @@
 #    By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/27 21:02:35 by ekhaled           #+#    #+#              #
-#    Updated: 2024/01/09 22:23:43 by ekhaled          ###   ########.fr        #
+#    Updated: 2024/01/12 18:29:24 by ekhaled          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,9 +28,11 @@ SRCS_UTILS		:=	ft_calloc.c \
 					ft_strafree.c \
 					ft_strajoin.c \
 					ft_stralen.c \
+					ft_strareeq.c \
 					ft_strarm.c \
 					ft_strarp.c \
 					ft_strchri.c \
+					ft_strchrseti.c \
 					ft_strcmp.c \
 					ft_strcpy.c \
 					ft_strdup.c \
