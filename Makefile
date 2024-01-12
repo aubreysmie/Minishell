@@ -6,7 +6,7 @@
 #    By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/27 21:02:35 by ekhaled           #+#    #+#              #
-#    Updated: 2024/01/12 23:50:31 by ekhaled          ###   ########.fr        #
+#    Updated: 2024/01/13 00:00:34 by ekhaled          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ SRC_DIR			:=	sources
 OBJ_DIR			:=	objects
 
 SRCS_UTILS		:=	ft_calloc.c \
-					ft_charisin.c \
+					ft_charisinset.c \
+					ft_charsetisinlstr.c \
 					ft_isalnum.c \
 					ft_isalpha.c \
 					ft_isdigit.c \

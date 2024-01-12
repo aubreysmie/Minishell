@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_charisin.c                                      :+:      :+:    :+:   */
+/*   ft_charsetisinlstr.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 12:55:04 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/09 12:59:54 by ekhaled          ###   ########.fr       */
+/*   Created: 2024/01/12 23:58:08 by ekhaled           #+#    #+#             */
+/*   Updated: 2024/01/13 00:00:22 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
 
-bool	ft_charisin(char c, char set[])
+#include "parsing.h"
+
+bool	ft_charsetisinlstr(char set[], t_lstr lstr)
 {
 	int	i;
 
-	if (!set)
-		return (0);
 	i = 0;
-	while (set[i])
+	while (i < lstr.len)
 	{
-		if (c == set[i])
-			return (1);
+		if (ft_charisinset(lstr.str[i], set))
+			return (true);
 		i++;
 	}
-	return (0);
+	return (false);
 }

@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 17:40:49 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/12 23:50:06 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/12 23:57:37 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ char	**ft_split(char const *s, char c);
 char	*ft_substrrange(char *buffer,
 			unsigned int start_index, unsigned int end_index);
 
-bool	ft_charisin(char c, char set[]);
+bool	ft_charisinset(char c, char set[]);
+bool	ft_charsetisinlstr(char set[], t_lstr lstr);
 bool	ft_strareeq(char *s1, char *s2);
 int		ft_strchrseti(const char *str, char set[]);
 int		ft_lstrchrseti(t_lstr lstr, char set[]);
