@@ -6,7 +6,7 @@
 #    By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/27 21:02:35 by ekhaled           #+#    #+#              #
-#    Updated: 2024/01/12 18:29:24 by ekhaled          ###   ########.fr        #
+#    Updated: 2024/01/12 23:50:31 by ekhaled          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRCS_UTILS		:=	ft_calloc.c \
 					ft_isalnum.c \
 					ft_isalpha.c \
 					ft_isdigit.c \
+					ft_lstrchrseti.c \
 					ft_lstrcmp.c \
 					ft_split.c \
 					ft_straadd.c \
