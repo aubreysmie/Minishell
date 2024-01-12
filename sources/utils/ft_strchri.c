@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 23:21:37 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/02 04:42:55 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/12 18:32:55 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,7 @@ int	ft_strchri(const char *str, char c)
 			return (i);
 		i++;
 	}
+	if (str[i] == c)
+		return (i);
 	return (-1);
 }

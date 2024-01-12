@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 18:22:12 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/12 18:27:17 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/12 18:32:18 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@ int	ft_strchrseti(const char *str, char set[])
 			return (i);
 		i++;
 	}
+	if (ft_charisin(str[i], set))
+		return (i);
 	return (-1);
 }
