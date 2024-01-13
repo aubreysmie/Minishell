@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 17:40:49 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/12 23:57:37 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/13 04:25:15 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int		ft_isalnum(char c);
 int		ft_strlen(const char *str);
 int		ft_strcmp(const char *s1, const char *s2);
 char	*ft_strjoin(const char *s1, const char *s2);
+char	*ft_strjoinfree(const char *s1, const char *s2);
 int		ft_strchri(const char *str, char c);
 char	*ft_strcpy(char *dest, const char *src);
 char	*ft_strdup(char *str);
