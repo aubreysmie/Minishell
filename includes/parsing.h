@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 14:28:10 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/11 22:42:02 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/13 01:07:50 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,9 @@ typedef struct s_quotes
 	bool	in;
 	char	type;
 }	t_quotes;
+
+
+char			*remove_quotes(char *str);
 
 t_token_queue	*ft_queuenew(t_token content);
 t_token_queue	*ft_queuelast(t_token_queue *queue);
