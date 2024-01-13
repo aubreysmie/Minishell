@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 00:34:34 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/13 01:32:11 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/13 03:40:02 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	fill_unquoted_str(char *unquoted_str, char *str)
 		}
 		i++;
 	}
+	unquoted_str[j] = 0;
 }
 
 char	*remove_quotes(char *str)
