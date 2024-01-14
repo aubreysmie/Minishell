@@ -62,7 +62,7 @@ typedef struct s_token_queue
 
 typedef struct s_quotes
 {
-	bool	in;
+	bool	is_in;
 	char	type;
 }	t_quotes;
 
