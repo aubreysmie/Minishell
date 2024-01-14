@@ -6,7 +6,7 @@
 #    By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/27 21:02:35 by ekhaled           #+#    #+#              #
-#    Updated: 2024/01/13 17:10:39 by ekhaled          ###   ########.fr        #
+#    Updated: 2024/01/14 05:39:18 by ekhaled          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,10 @@ SRCS_UTILS		:=	ft_calloc.c \
 					ft_isdigit.c \
 					ft_lstrchrseti.c \
 					ft_lstrcmp.c \
+					ft_max.c \
 					ft_split.c \
 					ft_straadd.c \
+					ft_straddcharfree.c \
 					ft_stradup.c \
 					ft_strafree.c \
 					ft_strajoin.c \
@@ -49,9 +51,26 @@ SRCS_BUILTINS	:=	env.c \
 					pwd.c \
 					unset.c
 SRCS_ERRORS		:=	error_disp.c
+SRCS_EXPANSION	:=	remove_quotes.c
+SRCS_QUEUE		:=	ft_queuefree.c \
+					ft_queuefreeall.c \
+					ft_queuelast.c \
+					ft_queuelen.c \
+					ft_queuenew.c \
+					ft_queuepop.c \
+					ft_queuepush.c
 SRCS_TOKEN_REC	:=	is_name.c \
+					is_operator.c \
 					is_word.c
-SRCS_PARSING	:=	${addprefix token_recognition/, ${SRCS_TOKEN_REC}}
+SRCS_TOKENIZER	:=	${addprefix queue/, ${SRCS_QUEUE}} \
+					${addprefix token_recognition/, ${SRCS_TOKEN_REC}} \
+					delimit_token.c \
+					generate_heredocs.c \
+					generate_tokens.c \
+					lstr_to_token.c
+SRCS_PARSING	:=	${addprefix expansions/, ${SRCS_EXPANSION}} \
+					${addprefix tokenizer/, ${SRCS_TOKENIZER}} \
+					read_input.c
 SRCS_SESSION	:=	init_session.c \
 					destroy_session.c
 SRCS_MAIN		:=	main.c
