@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 04:29:52 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/14 05:26:22 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/14 06:19:02 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,12 +102,13 @@ bool	generate_heredocs(t_cstr *input,
 		if (!get_delimiter(&delimiter, delimiter_queue))
 			return (0);
 		if (!get_heredoc(input, delimiter.str, &heredoc))
-			return (0);
+			return (free(delimiter.str), 0);
 		if (!fix_heredoc(&heredoc, delimiter.was_quoted))
-			return (0);
+			return (free(delimiter.str), 0);
 		if (!add_token_to_queue(heredoc_queue,
 				(t_token){WORD_TOKEN, (t_lstr){heredoc, ft_strlen(heredoc)}}))
-			return (0);
+			return (free(delimiter.str), free(heredoc), 0);
+		free(delimiter.str);
 	}
 	return (1);
 }
