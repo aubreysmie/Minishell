@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 04:29:52 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/14 19:43:46 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/14 20:42:11 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ bool	get_heredoc(t_cstr *input, char *delimiter, char **heredoc)
 
 	line = NULL;
 	*heredoc = NULL;
-	if (input->str[input->cursor])
+	if (input->str[input->cursor - 1] == '\n')
 		input->cursor--;
 	while (!ft_strareeq(line, delimiter))
 	{
