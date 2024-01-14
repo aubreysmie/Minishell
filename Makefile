@@ -6,7 +6,7 @@
 #    By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/27 21:02:35 by ekhaled           #+#    #+#              #
-#    Updated: 2024/01/14 05:39:18 by ekhaled          ###   ########.fr        #
+#    Updated: 2024/01/14 06:09:17 by ekhaled          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,7 +70,8 @@ SRCS_TOKENIZER	:=	${addprefix queue/, ${SRCS_QUEUE}} \
 					lstr_to_token.c
 SRCS_PARSING	:=	${addprefix expansions/, ${SRCS_EXPANSION}} \
 					${addprefix tokenizer/, ${SRCS_TOKENIZER}} \
-					read_input.c
+					read_input.c \
+					update_input.c
 SRCS_SESSION	:=	init_session.c \
 					destroy_session.c
 SRCS_MAIN		:=	main.c

@@ -47,19 +47,7 @@ t_lstr	get_token_lstr(t_quotes *quotes, unsigned int *i, t_cstr *input)
 	return ((t_lstr){input->str + input->cursor, *i});
 }
 
-bool	update_input(t_cstr *input)
 {
-	char	*og_input_str;
-	char	*new_input_str;
-
-	og_input_str = input->str;
-	new_input_str = readline("> ");
-	input->str = ft_strajoin((char *[]){og_input_str, "\n", new_input_str, NULL});
-	free(og_input_str);
-	free(new_input_str);
-	if (!input->str)
-		return (0);
-	return (1);
 }
 
 bool	delimit_token(t_cstr *input, t_lstr *token_lstr)
