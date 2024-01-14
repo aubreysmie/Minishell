@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 04:29:52 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/14 05:07:56 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/14 05:26:22 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,12 @@ bool	get_delimiter(t_delimiter *delimiter, t_token_queue **delimiter_queue)
 		delimiter->was_quoted = false;
 		delimiter->str
 			= ft_substrrange(delimiter_lstr.str, 0, delimiter_lstr.len - 1);
-		if (!delimiter->str)
-			return (0);
-		return (1);
+		return (delimiter->str);
 	}
 	delimiter->was_quoted = true;
 	delimiter->str = remove_quotes(
 			ft_substrrange(delimiter_lstr.str, 0, delimiter_lstr.len - 1));
-	if (!delimiter->str)
-		return (0);
-	return (1);
+	return (delimiter->str);
 }
 
 bool	fix_heredoc(char **heredoc, bool was_delimiter_quoted)
@@ -83,18 +79,12 @@ bool	get_heredoc(t_cstr *input, char *delimiter, char **heredoc)
 				return (0);
 		input->cursor++;
 		if (!update_heredoc(heredoc, line))
-		{
-			free(line);
-			return (0);
-		}
+			return (free(line), 0);
 		free(line);
 		line = ft_substrrange(input->str, input->cursor, input->cursor
 				+ ft_strchrseti(input->str + input->cursor, "\n\0") - 1);
 		if (!line)
-		{
-			free(*heredoc);
-			return (0);
-		}
+			return (free(*heredoc), 0);
 		input->cursor = input->cursor + ft_strlen(line);
 	}
 	free(line);
