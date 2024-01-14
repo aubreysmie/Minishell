@@ -56,7 +56,7 @@ bool	delimit_token(t_cstr *input, t_lstr *token_lstr)
 	static unsigned int	i = 0;
 
 	*token_lstr = get_token_lstr(&quotes, &i, input);
-	if (!quotes.in)
+	if (!quotes.is_in)
 	{
 		i = 0;
 		return (1);
