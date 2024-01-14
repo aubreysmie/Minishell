@@ -6,7 +6,7 @@
 #    By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/27 21:02:35 by ekhaled           #+#    #+#              #
-#    Updated: 2024/01/14 06:09:17 by ekhaled          ###   ########.fr        #
+#    Updated: 2024/01/14 19:46:36 by ekhaled          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,9 +64,10 @@ SRCS_TOKEN_REC	:=	is_name.c \
 					is_word.c
 SRCS_TOKENIZER	:=	${addprefix queue/, ${SRCS_QUEUE}} \
 					${addprefix token_recognition/, ${SRCS_TOKEN_REC}} \
-					delimit_token.c \
 					generate_heredocs.c \
+					generate_ordinary_tokens.c \
 					generate_tokens.c \
+					get_token.c \
 					lstr_to_token.c
 SRCS_PARSING	:=	${addprefix expansions/, ${SRCS_EXPANSION}} \
 					${addprefix tokenizer/, ${SRCS_TOKENIZER}} \
