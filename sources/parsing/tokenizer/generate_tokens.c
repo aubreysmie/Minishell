@@ -31,7 +31,7 @@ bool	generate_ordinary_tokens(t_cstr *input,
 	while (input->str[input->cursor] && (!(*token_queue)
 			|| ft_queuelast(*token_queue)->token.type != NEWLINE_TOKEN))
 	{
-		if (!delimit_token(input, &token.content))
+		if (!delimit_token(input, &token.content, *token_queue))
 			return (0);
 		if (!token.content.len)
 		{

@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 14:28:10 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/14 05:37:48 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/14 16:08:10 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ bool			generate_tokens(t_cstr *input, t_token_queue **token_queue,
 bool			generate_heredocs(t_cstr *input,
 					t_token_queue **delimiter_queue,
 					t_token_queue **heredoc_queue);
-bool			delimit_token(t_cstr *input, t_lstr *token_lstr);
+bool			delimit_token(t_cstr *input, t_lstr *token_lstr, t_token_queue *token_queue);
 t_token			lstr_to_token(t_lstr lstr);
 bool			update_input(t_cstr *input);
 bool			add_token_to_queue(t_token_queue **queue, t_token token);

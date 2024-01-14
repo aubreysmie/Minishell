@@ -47,13 +47,21 @@ t_lstr	get_token_lstr(t_quotes *quotes, unsigned int *i, t_cstr *input)
 	return ((t_lstr){input->str + input->cursor, *i});
 }
 
+void	update_queue(char *old_input, char *new_input, t_token_queue *token_queue)
 {
+	while (token_queue)
+	{
+		token_queue->token.content.str
+			= token_queue->token.content.str - old_input + new_input;
+		token_queue = token_queue->next;
+	}
 }
 
-bool	delimit_token(t_cstr *input, t_lstr *token_lstr)
+bool	delimit_token(t_cstr *input, t_lstr *token_lstr, t_token_queue *token_queue)
 {
 	static t_quotes		quotes = (t_quotes){false, 0};
 	static unsigned int	i = 0;
+	char				*old_input_str;
 
 	*token_lstr = get_token_lstr(&quotes, &i, input);
 	if (!quotes.is_in)
@@ -61,7 +69,9 @@ bool	delimit_token(t_cstr *input, t_lstr *token_lstr)
 		i = 0;
 		return (1);
 	}
+	old_input_str = input->str;
 	if (!update_input(input))
 		return (0);
-	return (delimit_token(input, token_lstr));
+	update_queue(old_input_str, input->str, token_queue);
+	return (delimit_token(input, token_lstr, token_queue));
 }
