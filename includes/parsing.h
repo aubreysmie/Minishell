@@ -66,6 +66,11 @@ typedef struct s_quotes
 	char	type;
 }	t_quotes;
 
+typedef struct s_delimiter
+{
+	char		*str;
+	bool		was_quoted;
+}	t_delimiter;
 
 char			*remove_quotes(char *str);
 
