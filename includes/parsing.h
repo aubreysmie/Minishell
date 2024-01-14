@@ -78,8 +78,10 @@ t_token_queue	*ft_queuenew(t_token content);
 t_token_queue	*ft_queuelast(t_token_queue *queue);
 void			ft_queuepush(t_token_queue **queue, t_token_queue *new);
 t_token_queue	*ft_queuepop(t_token_queue **queue);
-void			ft_queuefree(t_token_queue *queue);
 unsigned int	ft_queuelen(t_token_queue *queue);
+void			ft_queuefree(t_token_queue *queue);
+void			ft_queuefreeall(t_token_queue *queue);
+
 
 bool			is_word(t_lstr word_candidate);
 bool			is_operator(t_lstr op_candidate);
