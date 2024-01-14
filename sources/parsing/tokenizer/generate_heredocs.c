@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 04:29:52 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/14 06:19:02 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/14 19:43:46 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,18 +91,23 @@ bool	get_heredoc(t_cstr *input, char *delimiter, char **heredoc)
 	return (1);
 }
 
-bool	generate_heredocs(t_cstr *input,
+bool	generate_heredocs(t_cstr *input, t_token_queue **token_queue,
 			t_token_queue **delimiter_queue, t_token_queue **heredoc_queue)
 {
 	t_delimiter	delimiter;
 	char		*heredoc;
+	char		*old_input_str;
 
 	while (*delimiter_queue)
 	{
+		old_input_str = input->str;
 		if (!get_delimiter(&delimiter, delimiter_queue))
 			return (0);
 		if (!get_heredoc(input, delimiter.str, &heredoc))
 			return (free(delimiter.str), 0);
+		if (old_input_str != input->str)
+			update_queues(old_input_str, input->str,
+				*token_queue, *delimiter_queue);
 		if (!fix_heredoc(&heredoc, delimiter.was_quoted))
 			return (free(delimiter.str), 0);
 		if (!add_token_to_queue(heredoc_queue,

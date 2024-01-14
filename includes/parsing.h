@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 14:28:10 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/14 16:08:10 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/14 19:45:27 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,14 +90,20 @@ bool			is_name(t_lstr name_candidate);
 bool			generate_tokens(t_cstr *input, t_token_queue **token_queue,
 					t_token_queue **heredoc_queue);
 bool			generate_heredocs(t_cstr *input,
+					t_token_queue **token_queue,
 					t_token_queue **delimiter_queue,
 					t_token_queue **heredoc_queue);
-bool			delimit_token(t_cstr *input, t_lstr *token_lstr, t_token_queue *token_queue);
+bool			generate_ordinary_tokens(t_cstr *input,
+					t_token_queue **token_queue,
+					t_token_queue **delimiter_queue);
+t_lstr			get_token(t_quotes *quotes, unsigned int *i, t_cstr *input);
+void			update_queues(char *old_input, char *new_input,
+					t_token_queue *token_queue, t_token_queue *delimiter_queue);
 t_token			lstr_to_token(t_lstr lstr);
-bool			update_input(t_cstr *input);
 bool			add_token_to_queue(t_token_queue **queue, t_token token);
 
 bool			read_input(t_session *session, char **input_str);
+bool			update_input(t_cstr *input);
 
 
 #endif
