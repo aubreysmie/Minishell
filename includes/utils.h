@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 17:40:49 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/13 17:10:16 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/14 03:32:03 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <stdlib.h>
 
 typedef struct s_lstr	t_lstr;
+
+int		ft_max(int a, int b);
 
 void	*ft_calloc(size_t nmemb, size_t size);
 int		ft_isalpha(char c);
@@ -33,6 +35,7 @@ char	*ft_strdup(char *str);
 char	**ft_split(char const *s, char c);
 char	*ft_substrrange(char *buffer,
 			unsigned int start_index, unsigned int end_index);
+char	*ft_straddcharfree(char *s, char c);
 
 bool	ft_charisinset(char c, char set[]);
 bool	ft_charsetisinlstr(char set[], t_lstr lstr);
@@ -45,7 +48,7 @@ int		ft_lstrcmp(t_lstr s1, t_lstr s2);
 int		ft_stralen(char **str_array);
 char	**ft_stradup(char **str_array);
 char	*ft_strajoin(char **str_array);
-char	*fr_strajoinfree(char **str_array);
+char	*ft_strajoinfree(char **str_array);
 void	ft_strafree(char **str_array);
 bool	ft_straadd(char ***str_array_p, char *str);
 bool	ft_strarm(char ***str_array_p, char *str);

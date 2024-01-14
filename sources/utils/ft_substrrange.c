@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 23:37:02 by ekhaled           #+#    #+#             */
-/*   Updated: 2023/12/31 00:27:05 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/13 18:36:55 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,16 @@ char	*ft_substrrange(char *buffer,
 	char			*res;
 	unsigned int	i;
 
-	if (!buffer || start_index > end_index)
+	if (!buffer || start_index > end_index + 1)
 		return (NULL);
 	res = malloc((end_index - start_index + 2) * sizeof(char));
 	if (!res)
 		return (NULL);
+	if (start_index == end_index + 1)
+	{
+		res[0] = 0;
+		return (res);
+	}
 	i = 0;
 	while (i != start_index)
 		i++;

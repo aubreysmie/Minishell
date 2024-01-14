@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 12:55:04 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/12 23:56:57 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/13 05:19:50 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@ bool	ft_charisinset(char c, char set[])
 			return (1);
 		i++;
 	}
+	if (c == set[i])
+		return (1);
 	return (0);
 }

@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strareeq.c                                      :+:      :+:    :+:   */
+/*   ft_strajoinfree.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/12 18:17:00 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/13 01:50:36 by ekhaled          ###   ########.fr       */
+/*   Created: 2024/01/13 17:05:28 by ekhaled           #+#    #+#             */
+/*   Updated: 2024/01/13 17:22:25 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdbool.h>
-
 #include "utils.h"
 
-bool	ft_strareeq(char *s1, char *s2)
+char	*ft_strajoinfree(char **str_array)
 {
-	if (!s1 && !s2)
-		return (true);
-	if (!s1 || !s2)
-		return (false);
-	return (ft_strcmp((const char *)s1, (const char *)s2) == 0);
+	unsigned int	i;
+	char			*res;
+
+	i = 0;
+	res = ft_strajoin(str_array);
+	if (!res)
+		return (NULL);
+	while (str_array[i])
+	{
+		free(str_array[i]);
+		i++;
+	}
+	return (res);
 }

@@ -1,24 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strareeq.c                                      :+:      :+:    :+:   */
+/*   ft_straddcharfree.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/12 18:17:00 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/13 01:50:36 by ekhaled          ###   ########.fr       */
+/*   Created: 2024/01/13 18:48:27 by ekhaled           #+#    #+#             */
+/*   Updated: 2024/01/13 18:52:09 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdbool.h>
+#include <stdlib.h>
 
 #include "utils.h"
 
-bool	ft_strareeq(char *s1, char *s2)
+char	*ft_straddcharfree(char *s, char c)
 {
-	if (!s1 && !s2)
-		return (true);
-	if (!s1 || !s2)
-		return (false);
-	return (ft_strcmp((const char *)s1, (const char *)s2) == 0);
+	unsigned int	i;
+	char			*res;
+
+	if (!s)
+		return (NULL);
+	res = malloc((ft_strlen(s) + 2) * sizeof(char));
+	if (!res)
+		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		res[i] = s[i];
+		i++;
+	}
+	res[i] = c;
+	res[i + 1] = 0;
+	free(s);
+	return (res);
 }
