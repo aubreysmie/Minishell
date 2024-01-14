@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 14:28:10 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/13 01:07:50 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/14 05:37:48 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,14 @@ enum e_token_type
 
 typedef struct s_lstr
 {
-	char		*str;
-	uint32_t	len;
+	char			*str;
+	unsigned int	len;
 }	t_lstr;
 
 typedef struct s_cstr
 {
-	char		*str;
-	uint32_t	cursor;
+	char			*str;
+	unsigned int	cursor;
 }	t_cstr;
 
 typedef struct s_token
