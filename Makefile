@@ -6,7 +6,7 @@
 #    By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/27 21:02:35 by ekhaled           #+#    #+#              #
-#    Updated: 2024/01/16 01:40:50 by ekhaled          ###   ########.fr        #
+#    Updated: 2024/01/16 02:40:32 by ekhaled          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,8 @@ SRCS_BUILTINS	:=	env.c \
 					pwd.c \
 					unset.c
 SRCS_ERRORS		:=	error_disp.c
-SRCS_EXPANSION	:=	remove_quotes.c
+SRCS_EXPANSION	:=	expand_parameters.c \
+					remove_quotes.c
 SRCS_QUEUE		:=	ft_queuefree.c \
 					ft_queuefreeall.c \
 					ft_queuelast.c \

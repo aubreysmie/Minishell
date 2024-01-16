@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 14:28:10 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/14 19:45:27 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/16 02:40:05 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ typedef struct s_delimiter
 	bool		was_quoted;
 }	t_delimiter;
 
+
+char			*expand_parameters(char *str, t_session *session);
 char			*remove_quotes(char *str);
 
 t_token_queue	*ft_queuenew(t_token content);
