@@ -6,7 +6,7 @@
 #    By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/27 21:02:35 by ekhaled           #+#    #+#              #
-#    Updated: 2024/01/14 19:46:36 by ekhaled          ###   ########.fr        #
+#    Updated: 2024/01/16 01:40:50 by ekhaled          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ SRCS_UTILS		:=	ft_calloc.c \
 					ft_strjoinfree.c \
 					ft_strlen.c \
 					ft_substrrange.c \
+					ft_uitoa.c \
 					get_next_line.c
 SRCS_BUILTINS	:=	env.c \
 					export.c \

@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 17:40:49 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/14 03:32:03 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/16 01:27:12 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef struct s_lstr	t_lstr;
 
 int		ft_max(int a, int b);
 
+char	*ft_uitoa(unsigned int n);
 void	*ft_calloc(size_t nmemb, size_t size);
 int		ft_isalpha(char c);
 int		ft_isdigit(char c);
