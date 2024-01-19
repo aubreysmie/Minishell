@@ -6,9 +6,11 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 23:46:24 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/18 23:59:20 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/19 18:59:49 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <unistd.h>
 
 #include "parsing.h"
 #include "error.h"
@@ -42,7 +44,7 @@ void	disp_token_error(enum e_token_type token_type)
 	write(2, "minishell", 9);
 	write(2, ": ", 2);
 	write(2, "syntax error near unexpected token ", 35);
-	write(2, "'", 1);
+	write(2, "`", 1);
 	disp_token(token_type);
 	write(2, "'", 1);
 	write(2, "\n", 1);
