@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 14:28:10 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/16 02:40:05 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/19 19:22:39 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,77 @@ typedef struct s_delimiter
 	bool		was_quoted;
 }	t_delimiter;
 
+/*-------- AST --------*/
+
+enum e_node_type
+{
+	AND_NODE,
+	OR_NODE,
+	PIPE_NODE,
+	CMD_NODE
+};
+
+enum e_redir_type
+{
+	INPUT_REDIR,
+	HEREDOC_REDIR,
+	OUTPUT_REDIR,
+	OUTPUT_APPEND_REDIR
+};
+
+typedef struct s_redir
+{
+	enum e_redir_type	type;
+	union
+	{
+		char			*file;
+		char			*heredoc;
+	};
+}	t_redir;
+
+typedef struct s_cmd
+{
+	char		*cmd_name;
+	char		**cmd_args;
+	t_redir		input_redir;
+	t_redir		output_redir;
+}	t_cmd;
+
+typedef struct s_node			t_node;
+
+typedef struct s_node
+{
+	enum e_node_type	type;
+	t_node				*parent;
+	t_node				*left_child;
+	t_node				*right_child;
+	t_cmd				cmd;
+}	t_node;
+
+typedef t_node					*t_ast;
+
+bool			generate_ast(t_cstr *input, t_token_queue **token_queue,
+					t_token_queue **heredoc_queue, t_ast *ast);
+bool			create_sub_tree(t_cstr *input, t_token_queue **token_queue,
+					t_token_queue **heredoc_queue, t_ast *ast);
+bool			update_token_queue(t_cstr *input,
+					t_token_queue **token_queue, t_token_queue **heredoc_queue);
+bool			create_leaf(t_cstr *input, t_token_queue **token_queue,
+					t_token_queue **heredoc_queue, t_node **leaf);
+bool			update_cmd(t_token_queue **token_queue,
+					t_token_queue **heredoc_queue, t_node **leaf,
+					enum e_redir_type *next_redir_type);
+bool			try_to_update_redir_files(t_token_queue *token_el,
+					t_token_queue **heredoc_queue,
+					t_node **leaf, enum e_redir_type *next_redir_type);
+bool			update_redir_files(t_token token, t_token_queue **heredoc_queue,
+					t_cmd *cmd, enum e_redir_type redir_type);
+void			update_redir_types(t_token token, t_cmd *cmd,
+					enum e_redir_type *redir_type);
+bool			init_node(t_node **node);
+void			init_cmd(t_cmd *cmd);
+void			free_cmd(t_cmd *cmd);
+void			free_ast(t_ast ast);
 
 char			*expand_parameters(char *str, t_session *session);
 char			*remove_quotes(char *str);
