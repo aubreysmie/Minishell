@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 04:29:52 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/14 20:42:11 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/19 20:07:34 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 bool	get_delimiter(t_delimiter *delimiter, t_token_queue **delimiter_queue)
 {
 	t_lstr	delimiter_lstr;
+	char	*temp;
 
 	delimiter_lstr = (*delimiter_queue)->token.content;
 	free(ft_queuepop(delimiter_queue));
@@ -26,8 +27,9 @@ bool	get_delimiter(t_delimiter *delimiter, t_token_queue **delimiter_queue)
 		return (delimiter->str);
 	}
 	delimiter->was_quoted = true;
-	delimiter->str = remove_quotes(
-			ft_substrrange(delimiter_lstr.str, 0, delimiter_lstr.len - 1));
+	temp = ft_substrrange(delimiter_lstr.str, 0, delimiter_lstr.len - 1);
+	delimiter->str = remove_quotes(temp);
+	free(temp);
 	return (delimiter->str);
 }
 
