@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 22:01:27 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/07 19:01:55 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/22 08:39:13 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static bool	set_var(char *arg, char ***env_p)
 	return (ft_straadd(env_p, ft_strdup(arg)));
 }
 
-int	export(char **argv, char ***env_p)
+int	ft_export(char **argv, char ***env_p)
 {
 	int	exit_status;
 	int	i;
@@ -78,7 +78,7 @@ int	export(char **argv, char ***env_p)
 		}
 		else
 		{
-			disp_error(SHOULD_PRINT_SHELL,
+			disp_cmd_error(SHOULD_PRINT_SHELL,
 				"export", argv[i], "not a valid identifier");
 			exit_status = 1;
 		}

@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 00:32:49 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/04 00:43:40 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/22 08:38:19 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include "utils.h"
 
-int	env(char **argv, char ***env_p)
+int	ft_env(char **argv, char ***env_p)
 {
 	int	i;
 
