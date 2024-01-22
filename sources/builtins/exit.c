@@ -6,12 +6,12 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 07:24:05 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/22 08:35:49 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/22 08:42:40 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-// #include "session.h"
+#include "session.h"
 #include "utils.h"
 #include "errors.h"
 
