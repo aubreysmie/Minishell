@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 14:28:10 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/19 19:22:39 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/22 03:45:23 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,15 @@ bool			create_sub_tree(t_cstr *input, t_token_queue **token_queue,
 					t_token_queue **heredoc_queue, t_ast *ast);
 bool			update_token_queue(t_cstr *input,
 					t_token_queue **token_queue, t_token_queue **heredoc_queue);
+
+bool			create_pipe_sub_tree(t_cstr *input, t_token_queue **token_queue,
+					t_token_queue **heredoc_queue, t_node **node);
+bool			create_pipe_parent(t_cstr *input, t_token_queue **token_queue,
+					t_token_queue **heredoc_queue, t_node **node);
+
+bool			has_wrong_synthax(t_node **node, t_node *child);
+void			skip_newlines(t_token_queue **token_queue);
+
 bool			create_leaf(t_cstr *input, t_token_queue **token_queue,
 					t_token_queue **heredoc_queue, t_node **leaf);
 bool			update_cmd(t_token_queue **token_queue,

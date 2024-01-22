@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 23:34:22 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/19 05:30:57 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/22 04:14:48 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ bool	init_node(t_node **node)
 	(*node)->left_child = NULL;
 	(*node)->right_child = NULL;
 	init_cmd(&(*node)->cmd);
+	(*node)->was_printed = false;//debug
 	return (1);
 }
