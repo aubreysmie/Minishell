@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 01:19:26 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/22 05:04:50 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/22 08:33:57 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "utils.h"
 
-int	echo(char **argv, char ***env_p)
+int	echo(char **argv)
 {
 	int		i;
 	bool	should_output_newline;
