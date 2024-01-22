@@ -22,7 +22,7 @@ bool	is_operator_delimited(unsigned int *i, t_cstr *input)
 	return (1);
 }
 
-void	update_quoting(t_quotes *quotes, unsigned int *i, t_cstr *input)
+static void	update_quoting_with_incr(t_quotes *quotes, unsigned int *i, t_cstr *input)
 {
 	if (!quotes->is_in)
 		*quotes = (t_quotes){true, input->str[input->cursor + *i]};
@@ -74,7 +74,7 @@ t_lstr	get_token(t_quotes *quotes, unsigned int *i, t_cstr *input)
 				return ((t_lstr){input->str + input->cursor, *i});
 		}
 		else if (ft_charisinset(input->str[input->cursor + *i], "'\""))
-			update_quoting(quotes, i, input);
+			update_quoting_with_incr(quotes, i, input);
 		else if (!quotes->is_in
 			&& (ft_charisinset(input->str[input->cursor + *i], ")>&<(|")))
 		{
