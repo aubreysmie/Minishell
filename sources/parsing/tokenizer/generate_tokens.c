@@ -28,7 +28,6 @@ bool	generate_tokens(t_cstr *input,
 {
 	t_token_queue	*delimiter_queue;
 
-	input->cursor = 0;
 	*token_queue = NULL;
 	*heredoc_queue = NULL;
 	delimiter_queue = NULL;

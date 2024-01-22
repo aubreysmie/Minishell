@@ -102,8 +102,7 @@ void			update_queues(char *old_input, char *new_input,
 t_token			lstr_to_token(t_lstr lstr);
 bool			add_token_to_queue(t_token_queue **queue, t_token token);
 
-bool			read_input(t_session *session, char **input_str);
+bool			read_input(t_session *session, t_cstr *input);
 bool			update_input(t_cstr *input);
-
 
 #endif

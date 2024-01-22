@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 21:01:30 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/14 21:29:37 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/22 02:40:35 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ bool	run_repl(t_session *session)
 
 	while (!session->should_exit)
 	{
-		if (!read_input(session, &input.str))
+		if (!read_input(session, &input))
 			return (0);
 		if (!generate_tokens(&input, &token_queue, &heredoc_queue))
 			return (0);
