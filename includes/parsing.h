@@ -152,8 +152,23 @@ void			init_cmd(t_cmd *cmd);
 void			free_cmd(t_cmd *cmd);
 void			free_ast(t_ast ast);
 
+void			update_quoting(t_quotes *quotes, char *str, int i);
+
 char			*expand_parameters(char *str, t_session *session);
+char			*match_patterns(char *str);
 char			*remove_quotes(char *str);
+
+bool			is_matching_file(char *str, char *file);
+bool			has_interpretable_asterisk(char *str);
+int				find_first_asterisk(char *str);
+int				find_last_asterisk(char *str);
+bool			are_patterns_found(char *str, char *file,
+					int first_asterisk_index, int last_asterisk_index);
+bool			is_pattern_in(char *matching_leftover_str,
+					int pattern_start, int pattern_end, t_lstr *available_file);
+char			*create_new_str(char *str, char **matching_files);
+
+
 
 t_token_queue	*ft_queuenew(t_token content);
 t_token_queue	*ft_queuelast(t_token_queue *queue);
