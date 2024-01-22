@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 17:40:49 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/16 01:27:12 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/21 01:42:17 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 typedef struct s_lstr	t_lstr;
 
 int		ft_max(int a, int b);
+int		ft_min(int a, int b);
 
 char	*ft_uitoa(unsigned int n);
 void	*ft_calloc(size_t nmemb, size_t size);
@@ -28,6 +29,7 @@ int		ft_isalnum(char c);
 
 int		ft_strlen(const char *str);
 int		ft_strcmp(const char *s1, const char *s2);
+bool	ft_strareeq(char *s1, char *s2);
 char	*ft_strjoin(const char *s1, const char *s2);
 char	*ft_strjoinfree(const char *s1, const char *s2);
 int		ft_strchri(const char *str, char c);
