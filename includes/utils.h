@@ -36,6 +36,7 @@ int		ft_strchri(const char *str, char c);
 char	*ft_strcpy(char *dest, const char *src);
 char	*ft_strdup(char *str);
 char	**ft_split(char const *s, char c);
+char	**ft_splitset(char const *s, char set[]);
 char	*ft_substrrange(char *buffer,
 			unsigned int start_index, unsigned int end_index);
 char	*ft_straddcharfree(char *s, char c);
@@ -45,7 +46,6 @@ bool	ft_charsetisinlstr(char set[], t_lstr lstr);
 bool	ft_strareeq(char *s1, char *s2);
 int		ft_strchrseti(const char *str, char set[]);
 int		ft_lstrchrseti(t_lstr lstr, char set[]);
-
 int		ft_lstrcmp(t_lstr s1, t_lstr s2);
 
 int		ft_stralen(char **str_array);
