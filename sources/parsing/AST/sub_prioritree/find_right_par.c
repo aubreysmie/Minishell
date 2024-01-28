@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_ast.c                                         :+:      :+:    :+:   */
+/*   find_right_par.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/19 19:19:32 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/19 19:22:23 by ekhaled          ###   ########.fr       */
+/*   Created: 2024/01/23 05:36:58 by ekhaled           #+#    #+#             */
+/*   Updated: 2024/01/23 05:37:07 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	free_ast(t_ast ast)
+bool	find_right_par(t_cstr *input, t_token_queue **token_queue,
+			t_token_queue **heredoc_queue, t_node **node)
 {
-	if (ast->left_child)
-		free_ast(ast->left_child);
-	if (ast->right_child)
-		free_ast(ast->right_child);
-	if (ast->type == CMD_NODE)
-		free_cmd(&ast->cmd);
-	free(ast);
+	if (!get_token_other_than_newline(input, token_queue, heredoc_queue))
+		return (free_ast(*node), 0);
+	if ((*token_queue)->token.type == RPAR_TOKEN)
+	{
+		free(ft_queuepop(token_queue));
+		return (1);
+	}
+	disp_token_error((*token_queue)->token.type);
+	free_ast(*node);
+	*node = NULL;
+	return (1);
 }

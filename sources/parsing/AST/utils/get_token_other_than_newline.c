@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_node.c                                        :+:      :+:    :+:   */
+/*   get_token_other_than_newline.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/18 23:34:22 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/22 04:14:48 by ekhaled          ###   ########.fr       */
+/*   Created: 2024/01/23 05:37:48 by ekhaled           #+#    #+#             */
+/*   Updated: 2024/01/23 05:37:58 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "parsing.h"
+#include "minishell.h"
 
-bool	init_node(t_node **node)
+bool	get_token_other_than_newline(t_cstr *input, t_token_queue **token_queue,
+			t_token_queue **heredoc_queue)
 {
-	*node = malloc(sizeof(t_node));
-	if (!(*node))
-		return (0);
-	(*node)->type = -1;
-	(*node)->parent = NULL;
-	(*node)->left_child = NULL;
-	(*node)->right_child = NULL;
-	init_cmd(&(*node)->cmd);
-	(*node)->was_printed = false;//debug
+	skip_newlines(token_queue);
+	while (!(*token_queue))
+		if (!update_token_queue(input, token_queue, heredoc_queue))
+			return (0);
 	return (1);
 }
