@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 08:35:41 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/29 10:19:56 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/29 10:53:11 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	execute_piped_builtin_child(t_io_fd io_fd, t_cmd *cmd,
 	if (session->last_cmd_status)
 		destroy_and_exit(session->last_cmd_status, session);
 	call_builtin(cmd->cmd_name, cmd->cmd_args, session);
+	if (session->last_cmd_status < 0)
+		destroy_and_exit(EXIT_FAILURE, session);
 	destroy_and_exit(session->last_cmd_status, session);
 }
 
