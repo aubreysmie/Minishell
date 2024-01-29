@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   disp_cmd_error.c                                   :+:      :+:    :+:   */
+/*   disp_access_error.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 22:14:51 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/22 07:54:59 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/28 09:59:17 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 #include "errors.h"
 #include "utils.h"
 
-void	disp_cmd_error(bool should_print_minishell,
-			char *cmd, char *arg, char *error)
+void	disp_access_error(bool should_print_minishell,
+			char *file, char *arg, char *error)
 {
 	if (should_print_minishell)
 		write(2, "minishell", 9);
 	write(2, ": ", 2);
-	write(2, cmd, ft_strlen(cmd));
+	write(2, file, ft_strlen(file));
 	write(2, ": ", 2);
 	if (arg)
 	{
