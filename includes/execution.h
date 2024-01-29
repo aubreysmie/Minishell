@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 00:58:27 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/28 23:31:50 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/29 10:18:03 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ typedef struct s_io_fd
 }	t_io_fd;
 
 bool	execute_ast(t_ast ast, t_session *session);
-bool	execute_sub_tree(t_ast ast, t_session *session);
 
 bool	execute_cmd_node(t_cmd *cmd, t_session *session);
 bool	execute_builtin(t_cmd *cmd, t_session *session);
@@ -38,10 +37,16 @@ bool	execute_cmd(t_cmd *cmd, t_session *session);
 
 bool	execute_pipe_sub_tree(t_ast ast, t_session *session);
 bool	execute_piped_cmd_node(t_cmd *cmd, t_session *session,
+			t_io_fd io_fd, int fd_to_close);
+bool	execute_last_piped_cmd_node(t_cmd *cmd, t_session *session,
 			t_io_fd io_fd, int *cpid_p);
 bool	execute_piped_builtin(t_io_fd io_fd, t_cmd *cmd,
+			t_session *session, int fd_to_close);
+bool	execute_last_piped_builtin(t_io_fd io_fd, t_cmd *cmd,
 			t_session *session, int *cpid_p);
 bool	execute_piped_cmd(t_io_fd io_fd, t_cmd *cmd,
+			t_session *session, int fd_to_close);
+bool	execute_last_piped_cmd(t_io_fd io_fd, t_cmd *cmd,
 			t_session *session, int *cpid_p);
 
 bool	call_cmd(char *cmd_name, char **cmd_args, char **env,
