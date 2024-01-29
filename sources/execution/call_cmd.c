@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 23:33:18 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/28 10:07:39 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/29 10:43:41 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,7 @@ bool	call_cmd(char *cmd_name, char **cmd_args, char **env,
 		return (0);
 	}
 	ft_strafree(paths);
-	disp_access_error(SHOULD_PRINT_SHELL,
-		cmd_name, NULL, "command not found");
+	disp_access_error(cmd_name, NULL, "command not found");
 	*last_cmd_status_p = errno;
 	return (1);
 }

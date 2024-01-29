@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 20:51:42 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/29 10:19:12 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/29 10:44:01 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,7 @@ bool	change_input(t_redir *input_redir, int *last_cmd_status_p)
 	if (rd_end == -1)
 	{
 		*last_cmd_status_p = errno;
-		disp_access_error(SHOULD_PRINT_SHELL,
-			input_redir->file, NULL, strerror(errno));
+		disp_access_error(input_redir->file, NULL, strerror(errno));
 		return (1);
 	}
 	if (dup2(rd_end, STDIN_FILENO) == -1)
@@ -101,8 +100,7 @@ bool	change_output(t_redir *output_redir, int *last_cmd_status_p)
 	if (wr_end == -1)
 	{
 		*last_cmd_status_p = errno;
-		disp_access_error(SHOULD_PRINT_SHELL,
-			output_redir->file, NULL, strerror(errno));
+		disp_access_error(output_redir->file, NULL, strerror(errno));
 		return (1);
 	}
 	if (dup2(wr_end, STDOUT_FILENO) == -1)
