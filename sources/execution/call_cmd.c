@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 23:33:18 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/30 23:47:44 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/31 00:30:25 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	**get_paths_from_env(char **env)
 			return (get_paths_from_var(env[i]));
 		i++;
 	}
-	return (NULL);
+	return (ft_calloc(1, sizeof(char *)));
 }
 
 bool	call_path_cmd(char *cmd_name, char **cmd_args, char **env, char **paths)
@@ -93,7 +93,7 @@ bool	call_cmd(char *cmd_name, char **cmd_args, char **env,
 
 	if (ft_charisinset('/', cmd_name))
 		return (call_local_cmd(cmd_name, cmd_args,
-			env, last_cmd_status_p));
+				env, last_cmd_status_p));
 	paths = get_paths_from_env(env);
 	if (!paths)
 		return (0);
@@ -102,8 +102,11 @@ bool	call_cmd(char *cmd_name, char **cmd_args, char **env,
 		free(paths);
 		return (0);
 	}
+	if (paths[0])
+		disp_access_error(cmd_name, NULL, "command not found");
+	else
+		disp_access_error(cmd_name, NULL, "No such file or directory");
 	ft_strafree(paths);
-	disp_access_error(cmd_name, NULL, "command not found");
 	*last_cmd_status_p = 127;
 	return (1);
 }
