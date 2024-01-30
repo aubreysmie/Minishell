@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 00:58:27 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/29 10:18:03 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/30 05:59:28 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,9 @@ bool	change_piped_io(t_io_fd io_fd,
 
 void	open_input_file(int *rd_end, t_redir *input_redir);
 void	open_output_file(int *wr_end, t_redir *output_redir);
+
+bool	expand_cmd_words(t_cmd *cmd, t_session *session);
+bool	expand_cmd_args(t_cmd *cmd, t_session *session);
 
 int		get_last_cmd_exit_status(int cpid);
 
