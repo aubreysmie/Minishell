@@ -6,14 +6,12 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 23:18:16 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/03 18:34:19 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/21 00:29:43 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdbool.h>
-
-#include <stdio.h>//debug
 
 static unsigned int	ft_count_words(const char *s, char c)
 {
