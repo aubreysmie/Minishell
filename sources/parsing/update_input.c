@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 06:07:26 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/14 06:08:45 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/30 00:53:46 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ bool	update_input(t_cstr *input)
 
 	og_input_str = input->str;
 	new_input_str = readline("> ");
+	if (!new_input_str)
+		return (1);
 	input->str
 		= ft_strajoin((char *[]){og_input_str, "\n", new_input_str, NULL});
 	free(og_input_str);
