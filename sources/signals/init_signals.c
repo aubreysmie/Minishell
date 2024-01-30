@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 13:22:35 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/30 09:57:25 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/31 00:04:38 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	handle_sigint(int sig)
 	(void)sig;
 	g_signum = 130;
 	write(2, "\n", 1);
+	if (waitpid(-1, NULL, WNOHANG) != -1)
+		return ;
 	rl_replace_line("", 0);
 	rl_on_new_line();
 	rl_redisplay();
@@ -27,6 +29,8 @@ void	init_signals(void)
 	struct sigaction	sa_int;
 	struct sigaction	sa_quit;
 
+	sa_int.sa_flags = SA_RESTART;
+	sa_quit.sa_flags = SA_RESTART;
 	sigemptyset(&sa_int.sa_mask);
 	sigemptyset(&sa_quit.sa_mask);
 	sa_int.sa_handler = &handle_sigint;
