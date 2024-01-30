@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 23:33:18 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/29 10:43:41 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/30 23:47:44 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,14 +66,34 @@ bool	call_path_cmd(char *cmd_name, char **cmd_args, char **env, char **paths)
 	return (1);
 }
 
+bool	call_local_cmd(char *cmd_name, char **cmd_args, char **env,
+			int *last_cmd_status_p)
+{
+	if (access(cmd_name, F_OK) == -1)
+	{
+		disp_access_error(cmd_name, NULL, strerror(errno));
+		*last_cmd_status_p = 127;
+		return (1);
+	}
+	if (access(cmd_name, X_OK) == -1)
+	{
+		disp_access_error(cmd_name, NULL, strerror(errno));
+		*last_cmd_status_p = 126;
+		return (1);
+	}
+	if (execve(cmd_name, cmd_args, env) == -1)
+		return (0);
+	return (1);
+}
+
 bool	call_cmd(char *cmd_name, char **cmd_args, char **env,
 			int *last_cmd_status_p)
 {
 	char	**paths;
 
 	if (ft_charisinset('/', cmd_name))
-		if (execve(cmd_name, cmd_args, env) == -1)
-			return (0);
+		return (call_local_cmd(cmd_name, cmd_args,
+			env, last_cmd_status_p));
 	paths = get_paths_from_env(env);
 	if (!paths)
 		return (0);
@@ -84,6 +104,6 @@ bool	call_cmd(char *cmd_name, char **cmd_args, char **env,
 	}
 	ft_strafree(paths);
 	disp_access_error(cmd_name, NULL, "command not found");
-	*last_cmd_status_p = errno;
+	*last_cmd_status_p = 127;
 	return (1);
 }
