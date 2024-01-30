@@ -6,12 +6,11 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 18:37:30 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/07 19:41:11 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/30 03:27:58 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "session.h"
-#include "builtins.h"
+#include "minishell.h"
 
 static bool	restore_hist(void)
 {
@@ -22,16 +21,17 @@ static bool	restore_hist(void)
 	if (fd == -1)
 		return (1);
 	if (!get_next_line(&line, fd))
-		return (0);
+		return (close(fd), 0);
 	while (line)
 	{
 		line[ft_strlen(line) - 1] = 0;
 		add_history(line);
 		free(line);
 		if (!get_next_line(&line, fd))
-			return (0);
+			return (close(fd), 0);
 	}
 	free(line);
+	close(fd);
 	return (1);
 }
 
