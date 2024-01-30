@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 14:28:10 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/30 02:43:54 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/30 04:58:47 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,7 +181,7 @@ bool				create_child(t_cstr *input,
 						t_token_queue **token_queue,
 						t_token_queue **heredoc_queue,
 						t_node **left_child);
-bool				got_token_other_than_newline(t_cstr *input,
+bool				get_token_other_than_newline(t_cstr *input,
 						t_token_queue **token_queue,
 						t_token_queue **heredoc_queue);
 enum e_node_type	get_node_type(enum e_token_type token_type);
