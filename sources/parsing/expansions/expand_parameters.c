@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 20:04:38 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/16 03:44:53 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/16 23:45:01 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,6 @@
 #include "session.h"
 #include "parsing.h"
 #include "utils.h"
-
-void	update_quoting(t_quotes *quotes, char *str, int i)
-{
-	if (!quotes->is_in && ft_charisinset(str[i], "'\""))
-		*quotes = (t_quotes){true, str[i]};
-	else if (str[i] == quotes->type)
-		*quotes = (t_quotes){false, 0};
-}
 
 bool	append_between_vars_str(char **expanded_str_p, char *str,
 			int var_end, int i)
