@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 22:40:25 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/09 22:40:57 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/30 07:43:03 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include "parsing.h"
 
-bool	is_operator(t_lstr op_candidate)//atester
+bool	is_operator(t_lstr op_candidate)
 {
 	if (op_candidate.len == 1
 		&& (op_candidate.str[0] == '|'
