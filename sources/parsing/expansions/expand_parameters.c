@@ -6,14 +6,12 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 20:04:38 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/16 23:45:01 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/30 08:19:05 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "session.h"
-#include "parsing.h"
-#include "utils.h"
+#include "minishell.h"
 
 bool	append_between_vars_str(char **expanded_str_p, char *str,
 			int var_end, int i)
@@ -40,8 +38,6 @@ char	*find_variable_value(t_lstr name, t_session *session)
 	i = 0;
 	if (name.len == 0)
 		return (ft_strdup("$"));
-	if (name.str[0] == '?')
-		return (ft_uitoa(session->last_cmd_status));
 	while (session->env[i])
 	{
 		equal_index = ft_strchri(session->env[i], '=');
@@ -56,6 +52,23 @@ char	*find_variable_value(t_lstr name, t_session *session)
 	return (ft_strdup(""));
 }
 
+bool	append_last_cmd_status(char **expanded_str_p,
+			int *i_p, int last_cmd_status)
+{
+	char	*temp;
+	char	*int_array;
+
+	(*i_p)++;
+	int_array = ft_uitoa(last_cmd_status);
+	if (!int_array)
+		return (0);
+	temp = *expanded_str_p;
+	*expanded_str_p = ft_strjoin(*expanded_str_p, int_array);
+	free(int_array);
+	free(temp);
+	return (*expanded_str_p);
+}
+
 bool	append_var_str(char **expanded_str_p,
 			char *str, int *i_p, t_session *session)
 {
@@ -65,6 +78,9 @@ bool	append_var_str(char **expanded_str_p,
 	char	*temp;
 	int		j;
 
+	if (str[*i_p + 1] == '?')
+		return (append_last_cmd_status(expanded_str_p, i_p,
+				session->last_cmd_status));
 	j = 1;
 	name = (t_lstr){NULL, 0};
 	name_candidate = (t_lstr){str + (*i_p) + 1, j};
@@ -80,9 +96,7 @@ bool	append_var_str(char **expanded_str_p,
 	if (!var_val)
 		return (0);
 	*expanded_str_p = ft_strjoin(*expanded_str_p, var_val);
-	free(temp);
-	free(var_val);
-	return (*expanded_str_p);
+	return (free(temp), free(var_val), *expanded_str_p);
 }
 
 char	*expand_parameters(char *str, t_session *session)
