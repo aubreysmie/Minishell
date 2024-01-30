@@ -47,13 +47,13 @@ static bool	create_default_env(char ***env_p)
 	free(path);
 	if (!pwd_var)
 		return (0);
-	if (export((char *[]){"export", pwd_var, NULL}, env_p))
+	if (ft_export((char *[]){"export", pwd_var, NULL}, env_p))
 	{
 		free(pwd_var);
 		return (0);
 	}
 	free(pwd_var);
-	if (export((char *[]){"export", "SHLVL=1", NULL}, env_p))
+	if (ft_export((char *[]){"export", "SHLVL=1", NULL}, env_p))
 		return (0);
 	return (1);
 }
