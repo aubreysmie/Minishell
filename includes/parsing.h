@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 14:28:10 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/30 04:58:47 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/30 09:23:07 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,6 @@ typedef struct s_node
 
 typedef t_node					*t_ast;
 
-
 bool				create_pipe_sub_tree(t_cstr *input,
 						t_token_queue **token_queue,
 						t_token_queue **heredoc_queue,
@@ -153,7 +152,6 @@ bool				create_tree_parent(t_cstr *input,
 						t_token_queue **token_queue,
 						t_token_queue **heredoc_queue,
 						t_node **node);
-
 
 bool				create_leaf(t_cstr *input,
 						t_token_queue **token_queue,
@@ -212,7 +210,6 @@ bool				generate_ast(t_cstr *input,
 bool				init_node(t_node **node);
 void				free_ast(t_ast ast);
 
-
 void				update_quoting(t_quotes *quotes, char *str, int i);
 
 char				*expand_parameters(char *str, t_session *session);
@@ -234,8 +231,6 @@ bool				is_pattern_in(char *matching_leftover_str,
 						t_lstr *available_file);
 char				*create_new_str(char *str,
 						char **matching_files);
-
-
 
 t_token_queue		*ft_queuenew(t_token content);
 t_token_queue		*ft_queuelast(t_token_queue *queue);
