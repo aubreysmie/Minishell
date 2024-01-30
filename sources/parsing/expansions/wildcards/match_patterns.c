@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 05:11:46 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/20 23:53:17 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/30 23:08:37 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ char	*match_patterns(char *str)
 	char	*new_str;
 
 	if (!get_files_names(&dir_files))
-		return (NULL);
+		return (ft_strdup(str));
 	if (!find_matching_files(str, dir_files, &matching_files))
 	{
 		ft_strafree(dir_files);
