@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 19:58:22 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/30 06:52:52 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/30 08:32:00 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 bool	execute_cmd_node(t_cmd *cmd, t_session *session)
 {
-	session->last_cmd_status = 0;
 	if (!expand_cmd_words(cmd, session))
 		return (0);
 	if (session->last_cmd_status)

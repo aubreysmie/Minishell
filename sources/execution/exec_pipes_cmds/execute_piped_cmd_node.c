@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 10:51:04 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/30 06:52:45 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/30 08:32:10 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 bool	execute_last_piped_cmd_node(t_cmd *cmd, t_session *session,
 			t_io_fd io_fd, int *cpid_p)
 {
-	session->last_cmd_status = 0;
 	if (!expand_cmd_words(cmd, session))
 		return (0);
 	if (session->last_cmd_status)
@@ -36,7 +35,6 @@ bool	execute_last_piped_cmd_node(t_cmd *cmd, t_session *session,
 bool	execute_piped_cmd_node(t_cmd *cmd, t_session *session,
 			t_io_fd io_fd, int fd_to_close)
 {
-	session->last_cmd_status = 0;
 	if (!expand_cmd_words(cmd, session))
 		return (0);
 	if (session->last_cmd_status)
