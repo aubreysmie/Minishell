@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 20:51:57 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/10 17:35:40 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/30 09:24:26 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 
 # include "session.h"
 # include "parsing.h"
-
-# include "debug_colors.h"//debug
+# include "execution.h"
+# include "errors.h"
+# include "builtins.h"
 
 #endif
