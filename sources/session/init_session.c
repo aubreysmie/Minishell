@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 18:37:30 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/30 09:16:42 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/30 09:55:19 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ static bool	init_env(char ***session_env_p, char **envp)
 
 bool	init_session(t_session *session, char **envp)
 {
+	init_signals();
 	session->env = NULL;
 	session->history = NULL;
 	session->last_cmd_status = 0;

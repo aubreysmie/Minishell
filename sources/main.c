@@ -6,11 +6,13 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 21:01:30 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/30 09:18:50 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/30 09:56:35 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int	g_signum = 0;
 
 bool	run_exec_loop(t_session *session)
 {
@@ -40,6 +42,13 @@ bool	run_exec_loop(t_session *session)
 	return (1);
 }
 
+void	check_signals(int *last_cmd_status_p)
+{
+	if (g_signum != -1)
+			*last_cmd_status_p = g_signum;
+	g_signum = -1;
+}
+
 bool	run_repl(t_session *session)
 {
 	while (true)
@@ -47,6 +56,7 @@ bool	run_repl(t_session *session)
 		session->cmd_info = (t_cmd_info){(t_cstr){NULL, 0}, NULL, NULL, NULL};
 		if (!read_input(session, &session->cmd_info.input))
 			return (0);
+		check_signals(&session->last_cmd_status);
 		if (!generate_tokens(&session->cmd_info.input,
 				&session->cmd_info.token_queue,
 				&session->cmd_info.heredoc_queue))

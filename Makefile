@@ -6,7 +6,7 @@
 #    By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/27 21:02:35 by ekhaled           #+#    #+#              #
-#    Updated: 2024/01/30 09:29:29 by ekhaled          ###   ########.fr        #
+#    Updated: 2024/01/30 09:45:43 by ekhaled          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -161,6 +161,8 @@ SRCS_EXEC			:=	${addprefix exec_cmd/, ${SRCS_EXEC_CMD}} \
 SRCS_SESSION		:=	init_session.c \
 						destroy_session.c
 
+SRCS_SIGNALS		:=	init_signals.c
+
 SRCS_MAIN			:=	main.c
 
 SRCS				:=	${addprefix builtins/, ${SRCS_BUILTINS}} \
@@ -168,6 +170,7 @@ SRCS				:=	${addprefix builtins/, ${SRCS_BUILTINS}} \
 						${addprefix execution/, ${SRCS_EXEC}} \
 						${addprefix parsing/, ${SRCS_PARSING}} \
 						${addprefix session/, ${SRCS_SESSION}} \
+						${addprefix signals/, ${SRCS_SIGNALS}} \
 						${addprefix utils/, ${SRCS_UTILS}} \
 						${SRCS_MAIN}
 
