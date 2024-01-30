@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 20:53:10 by ekhaled           #+#    #+#             */
-/*   Updated: 2023/12/30 03:49:59 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/30 09:16:57 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,22 @@
 # include <readline/history.h>
 
 # include "utils.h"
+# include "parsing.h"
+
+typedef struct s_cmd_info
+{
+	t_cstr			input;
+	t_token_queue	*token_queue;
+	t_token_queue	*heredoc_queue;
+	t_ast			ast;
+}	t_cmd_info;
 
 typedef struct s_session
 {
 	char		**env;
 	char		**history;
-	uint8_t		last_cmd_status;
-	bool		should_exit;
+	t_cmd_info	cmd_info;
+	int			last_cmd_status;
 }	t_session;
 
 bool	init_session(t_session *session, char **envp);
