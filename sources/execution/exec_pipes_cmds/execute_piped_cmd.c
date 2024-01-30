@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 08:07:20 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/29 09:50:47 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/30 06:51:55 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ bool	execute_last_piped_cmd(t_io_fd io_fd, t_cmd *cmd,
 
 	if (!save_std_io(&std_io_save))
 		return (0);
-	session->last_cmd_status = 0;
 	if (cmd->input_redir.type == HEREDOC_REDIR)
 		if (!change_input_heredoc(cmd->input_redir.heredoc,
 				&std_io_save, session))
@@ -61,7 +60,6 @@ bool	execute_piped_cmd(t_io_fd io_fd, t_cmd *cmd,
 
 	if (!save_std_io(&std_io_save))
 		return (0);
-	session->last_cmd_status = 0;
 	if (cmd->input_redir.type == HEREDOC_REDIR)
 		if (!change_input_heredoc(cmd->input_redir.heredoc,
 				&std_io_save, session))

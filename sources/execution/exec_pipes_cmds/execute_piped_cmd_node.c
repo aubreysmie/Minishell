@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 10:51:04 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/29 10:21:06 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/30 06:52:45 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,11 @@
 bool	execute_last_piped_cmd_node(t_cmd *cmd, t_session *session,
 			t_io_fd io_fd, int *cpid_p)
 {
-	// if (!expand_cmd_words(cmd))
-	// 	return (0);
+	session->last_cmd_status = 0;
+	if (!expand_cmd_words(cmd, session))
+		return (0);
+	if (session->last_cmd_status)
+		return (1);
 	if (is_cmd_builtin(cmd->cmd_name))
 	{
 		if (!execute_last_piped_builtin(io_fd, cmd, session, cpid_p))
@@ -33,8 +36,11 @@ bool	execute_last_piped_cmd_node(t_cmd *cmd, t_session *session,
 bool	execute_piped_cmd_node(t_cmd *cmd, t_session *session,
 			t_io_fd io_fd, int fd_to_close)
 {
-	// if (!expand_cmd_words(cmd))
-	// 	return (0);
+	session->last_cmd_status = 0;
+	if (!expand_cmd_words(cmd, session))
+		return (0);
+	if (session->last_cmd_status)
+		return (1);
 	if (is_cmd_builtin(cmd->cmd_name))
 	{
 		if (!execute_piped_builtin(io_fd, cmd, session, fd_to_close))

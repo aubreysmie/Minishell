@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 22:50:17 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/29 10:19:46 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/30 06:51:48 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ bool	execute_cmd(t_cmd *cmd, t_session *session)
 
 	if (!save_std_io(&std_io_save))
 		return (0);
-	session->last_cmd_status = 0;
 	if (cmd->input_redir.type == HEREDOC_REDIR)
 		if (!change_input_heredoc(cmd->input_redir.heredoc,
 				&std_io_save, session))

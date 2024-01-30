@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 20:36:53 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/29 10:53:52 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/30 06:51:24 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ bool	execute_builtin(t_cmd *cmd, t_session *session)
 
 	if (!save_std_io(&std_io_save))
 		return (0);
-	session->last_cmd_status = 0;
 	if (!change_io(&cmd->input_redir, &cmd->output_redir,
 			&session->last_cmd_status))
 		return (restore_std_io(&std_io_save), 0);
