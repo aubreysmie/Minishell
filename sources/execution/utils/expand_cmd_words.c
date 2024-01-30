@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 04:59:16 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/30 08:49:17 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/30 23:23:17 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,9 @@ bool	expand_redirs(t_cmd *cmd, t_session *session)
 
 bool	expand_cmd_words(t_cmd *cmd, t_session *session)
 {
-	if (!expand_cmd_args(cmd, session))
-		return (0);
+	if (cmd->cmd_name)
+		if (!expand_cmd_args(cmd, session))
+			return (0);
 	if (!expand_redirs(cmd, session))
 		return (0);
 	return (1);
