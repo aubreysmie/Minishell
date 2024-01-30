@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:21:27 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/14 17:56:48 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/30 07:37:11 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ bool	is_operator_delimited(unsigned int *i, t_cstr *input)
 	return (1);
 }
 
-static void	update_quoting_with_incr(t_quotes *quotes, unsigned int *i, t_cstr *input)
+void	update_quoting_with_incr(t_quotes *quotes,
+				unsigned int *i, t_cstr *input)
 {
 	if (!quotes->is_in)
 		*quotes = (t_quotes){true, input->str[input->cursor + *i]};
