@@ -6,7 +6,7 @@
 #    By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/27 21:02:35 by ekhaled           #+#    #+#              #
-#    Updated: 2024/01/31 11:04:51 by ekhaled          ###   ########.fr        #
+#    Updated: 2024/01/31 11:41:19 by ekhaled          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -159,7 +159,8 @@ SRCS_EXEC			:=	${addprefix exec_cmd/, ${SRCS_EXEC_CMD}} \
 						call_cmd.c \
 						execute_ast.c
 
-SRCS_SESSION		:=	init_session.c \
+SRCS_SESSION		:=	add_history_to_histfile.c \
+						init_session.c \
 						destroy_session.c
 
 SRCS_SIGNALS		:=	init_signals.c
