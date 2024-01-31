@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 00:58:27 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/30 05:59:28 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/31 11:08:08 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ bool	execute_last_piped_cmd(t_io_fd io_fd, t_cmd *cmd,
 bool	call_cmd(char *cmd_name, char **cmd_args, char **env,
 			int *last_cmd_status_p);
 void	call_builtin(char *cmd_name, char **cmd_args, t_session *session);
+
+bool	check_if_dir(char *name, bool *is_dir_p);
 
 bool	change_io(t_redir *input_redir, t_redir *output_redir,
 			int *last_cmd_status_p);

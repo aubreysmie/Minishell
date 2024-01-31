@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 23:33:18 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/31 10:20:22 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/31 11:18:31 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,17 +48,20 @@ char	**get_paths_from_env(char **env)
 
 bool	call_path_cmd(char *cmd_name, char **cmd_args, char **env, char **paths)
 {
+	bool	is_dir;
 	int		i;
 	char	*temp_cmd;
 
 	i = 0;
-	if (ft_strareeq(cmd_name, ".") || ft_strareeq(cmd_name, ".."))
-		return (1);
 	while (paths[i])
 	{
 		temp_cmd = ft_strajoin((char *[]){paths[i], "/", cmd_name, NULL});
 		if (!temp_cmd)
 			return (0);
+		if (!check_if_dir(temp_cmd, &is_dir))
+			return (free(temp_cmd), 0);
+		if (is_dir)
+			return (free(temp_cmd), 1);
 		if (access(temp_cmd, X_OK) == 0)
 		{
 			if (execve(temp_cmd, cmd_args, env) == -1)
@@ -70,9 +73,19 @@ bool	call_path_cmd(char *cmd_name, char **cmd_args, char **env, char **paths)
 	return (1);
 }
 
-bool	call_local_cmd(char *cmd_name, char **cmd_args, char **env,
+bool	call_fully_named_cmd(char *cmd_name, char **cmd_args, char **env,
 			int *last_cmd_status_p)
 {
+	bool	is_dir;
+
+	if (!check_if_dir(cmd_name, &is_dir))
+		return (0);
+	if (is_dir)
+	{
+		disp_access_error(cmd_name, NULL, "Is a directory");
+		*last_cmd_status_p = 126;
+		return (1);
+	}
 	if (access(cmd_name, F_OK) == -1)
 	{
 		disp_access_error(cmd_name, NULL, strerror(errno));
@@ -96,7 +109,7 @@ bool	call_cmd(char *cmd_name, char **cmd_args, char **env,
 	char	**paths;
 
 	if (ft_charisinset('/', cmd_name))
-		return (call_local_cmd(cmd_name, cmd_args,
+		return (call_fully_named_cmd(cmd_name, cmd_args,
 				env, last_cmd_status_p));
 	paths = get_paths_from_env(env);
 	if (!paths)

@@ -6,7 +6,7 @@
 #    By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/27 21:02:35 by ekhaled           #+#    #+#              #
-#    Updated: 2024/01/30 09:45:43 by ekhaled          ###   ########.fr        #
+#    Updated: 2024/01/31 11:04:51 by ekhaled          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -142,6 +142,7 @@ SRCS_EXEC_PIPES_CMD	:=	execute_pipe_sub_tree.c \
 						execute_piped_cmd.c
 
 SRCS_EXEC_UTILS		:=	change_io.c \
+						check_if_dir.c \
 						destroy_and_exit.c \
 						expand_cmd_args.c \
 						expand_cmd_words.c \
@@ -196,7 +197,7 @@ ${NAME}: ${OBJS}
 
 ${OBJ_DIR}/%.o: ${SRC_DIR}/%.c
 	${DIR_DUP}
-	${CC} ${CFLAGS} ${CPPFLAGS} -c -o $@ $<
+	${CC} ${CFLAGS} ${CPPFLAGS} -c -o $@ $< -gdwarf-4
 
 clean:
 	${RM} ${OBJ_DIR}
