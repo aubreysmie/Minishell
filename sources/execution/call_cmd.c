@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 23:33:18 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/31 11:18:31 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/31 13:26:51 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,12 @@ bool	call_path_cmd(char *cmd_name, char **cmd_args, char **env, char **paths)
 		temp_cmd = ft_strajoin((char *[]){paths[i], "/", cmd_name, NULL});
 		if (!temp_cmd)
 			return (0);
-		if (!check_if_dir(temp_cmd, &is_dir))
-			return (free(temp_cmd), 0);
-		if (is_dir)
-			return (free(temp_cmd), 1);
 		if (access(temp_cmd, X_OK) == 0)
 		{
+			if (!check_if_dir(temp_cmd, &is_dir))
+				return (free(temp_cmd), 0);
+			if (is_dir)
+				return (free(temp_cmd), 1);
 			if (execve(temp_cmd, cmd_args, env) == -1)
 				return (free(temp_cmd), 0);
 		}
@@ -78,18 +78,18 @@ bool	call_fully_named_cmd(char *cmd_name, char **cmd_args, char **env,
 {
 	bool	is_dir;
 
+	if (access(cmd_name, F_OK) == -1)
+	{
+		disp_access_error(cmd_name, NULL, strerror(errno));
+		*last_cmd_status_p = 127;
+		return (1);
+	}
 	if (!check_if_dir(cmd_name, &is_dir))
 		return (0);
 	if (is_dir)
 	{
 		disp_access_error(cmd_name, NULL, "Is a directory");
 		*last_cmd_status_p = 126;
-		return (1);
-	}
-	if (access(cmd_name, F_OK) == -1)
-	{
-		disp_access_error(cmd_name, NULL, strerror(errno));
-		*last_cmd_status_p = 127;
 		return (1);
 	}
 	if (access(cmd_name, X_OK) == -1)
