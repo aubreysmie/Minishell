@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 05:35:47 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/23 22:39:55 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/31 14:20:23 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ bool	is_sub_tree_left_child(t_token_queue **token_queue, t_node **node)
 	t_node	*leaf;
 
 	leaf = (*node)->left_child;
-	if (!(*token_queue) || (*token_queue)->token.type == NEWLINE)
+	if (!(*token_queue) || (*token_queue)->token.type == NEWLINE_TOKEN)
 	{
 		free(*node);
 		*node = leaf;
