@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 20:53:10 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/30 09:16:57 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/31 11:42:50 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,7 @@ typedef struct s_session
 
 bool	init_session(t_session *session, char **envp);
 void	destroy_session(t_session *session);
+
+void	add_history_to_histfile(char **history);
 
 #endif

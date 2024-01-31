@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 20:36:53 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/30 06:51:24 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/31 11:37:39 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ bool	execute_builtin(t_cmd *cmd, t_session *session)
 				&std_io_save, session))
 			return (restore_std_io(&std_io_save), 0);
 	if (ft_strareeq(cmd->cmd_name, "exit"))
+	{
 		restore_std_io(&std_io_save);
+		add_history_to_histfile(session->history);
+	}
 	call_builtin(cmd->cmd_name, cmd->cmd_args, session);
 	if (session->last_cmd_status < 0)
 		return (restore_std_io(&std_io_save), 0);
