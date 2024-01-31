@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 07:18:06 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/29 11:43:08 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/31 21:22:33 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ bool	execute_and_or_sub_tree(t_ast ast, t_session *session)
 
 bool	execute_ast(t_ast ast, t_session *session)
 {
+	if (g_signum != -1)
+		return (1);
 	if (ast->type == OR_IF_NODE || ast->type == AND_IF_NODE)
 	{
 		if (!execute_and_or_sub_tree(ast, session))
