@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 23:33:18 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/31 00:30:25 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/31 10:08:39 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,18 @@ bool	call_path_cmd(char *cmd_name, char **cmd_args, char **env, char **paths)
 	char	*temp_cmd;
 
 	i = 0;
+	if (ft_strareeq(cmd_name, ".") || ft_strareeq(cmd_name, ".>"))
+		return (1);
 	while (paths[i])
 	{
 		temp_cmd = ft_strajoin((char *[]){paths[i], "/", cmd_name, NULL});
 		if (!temp_cmd)
 			return (0);
 		if (access(temp_cmd, X_OK) == 0)
+		{
 			if (execve(temp_cmd, cmd_args, env) == -1)
 				return (free(temp_cmd), 0);
+		}
 		free(temp_cmd);
 		i++;
 	}
@@ -99,7 +103,7 @@ bool	call_cmd(char *cmd_name, char **cmd_args, char **env,
 		return (0);
 	if (!call_path_cmd(cmd_name, cmd_args, env, paths))
 	{
-		free(paths);
+		ft_strafree(paths);
 		return (0);
 	}
 	if (paths[0])
