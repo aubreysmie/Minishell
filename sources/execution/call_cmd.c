@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 23:33:18 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/31 10:08:39 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/31 10:20:22 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ bool	call_path_cmd(char *cmd_name, char **cmd_args, char **env, char **paths)
 	char	*temp_cmd;
 
 	i = 0;
-	if (ft_strareeq(cmd_name, ".") || ft_strareeq(cmd_name, ".>"))
+	if (ft_strareeq(cmd_name, ".") || ft_strareeq(cmd_name, ".."))
 		return (1);
 	while (paths[i])
 	{
