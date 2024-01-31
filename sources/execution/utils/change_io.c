@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 20:51:42 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/29 10:44:01 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/01/31 09:20:58 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,27 @@
 bool	change_piped_io(t_io_fd io_fd,
 			t_redir *input_redir, t_redir *output_redir)
 {
-	if (input_redir->type == (enum e_redir_type)(-1)
-		&& io_fd.rd_end != STDIN_FILENO)
+	if (io_fd.rd_end != STDIN_FILENO)
 	{
-		if (dup2(io_fd.rd_end, STDIN_FILENO) == -1)
+		if (input_redir->type == (enum e_redir_type)(-1))
 		{
-			close(io_fd.rd_end);
-			return (0);
+			if (dup2(io_fd.rd_end, STDIN_FILENO) == -1)
+			{
+				close(io_fd.rd_end);
+				return (0);
+			}
 		}
 		close(io_fd.rd_end);
 	}
-	if (output_redir->type == (enum e_redir_type)(-1)
-		&& io_fd.wr_end != STDOUT_FILENO)
+	if (io_fd.wr_end != STDOUT_FILENO)
 	{
-		if (dup2(io_fd.wr_end, STDOUT_FILENO) == -1)
+		if (output_redir->type == (enum e_redir_type)(-1))
 		{
-			close(io_fd.wr_end);
-			return (0);
+			if (dup2(io_fd.wr_end, STDOUT_FILENO) == -1)
+			{
+				close(io_fd.wr_end);
+				return (0);
+			}
 		}
 		close(io_fd.wr_end);
 	}
