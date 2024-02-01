@@ -6,13 +6,21 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 21:01:30 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/30 09:56:35 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/02/01 02:27:46 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 int	g_signum = 0;
+
+bool	update_history(t_session *session)
+{
+	add_history(session->cmd_info.input.str);
+	if (!ft_straadd(&session->history, session->cmd_info.input.str))
+		return (0);
+	return (1);
+}
 
 bool	run_exec_loop(t_session *session)
 {
@@ -26,11 +34,6 @@ bool	run_exec_loop(t_session *session)
 				ft_queuefree(session->cmd_info.token_queue),
 				free_ast(session->cmd_info.ast), 0);
 		skip_newlines(&session->cmd_info.token_queue);
-		add_history(session->cmd_info.input.str);
-		if (!ft_straadd(&session->history, session->cmd_info.input.str))
-			return (ft_queuefree(session->cmd_info.token_queue),
-				ft_queuefree(session->cmd_info.token_queue),
-				free_ast(session->cmd_info.ast), 0);
 		if (!session->cmd_info.ast)
 		{
 			session->last_cmd_status = 2;
@@ -63,6 +66,8 @@ bool	run_repl(t_session *session)
 			return (0);
 		skip_newlines(&session->cmd_info.token_queue);
 		if (!run_exec_loop(session))
+			return (0);
+		if (!update_history(session))
 			return (0);
 	}
 	return (1);

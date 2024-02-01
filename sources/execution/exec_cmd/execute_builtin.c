@@ -6,11 +6,22 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 20:36:53 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/31 11:37:39 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/02/01 02:23:40 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+bool	prepare_to_exit(t_io_fd *std_io_save, t_session *session)
+{
+	if (!restore_std_io(std_io_save))
+		return (0);
+	if (!ft_straadd(&session->history, session->cmd_info.input.str))
+		return (0);
+	session->cmd_info.input.str = NULL;
+	add_history_to_histfile(session->history);
+	return (1);
+}
 
 bool	execute_builtin(t_cmd *cmd, t_session *session)
 {
@@ -28,10 +39,8 @@ bool	execute_builtin(t_cmd *cmd, t_session *session)
 				&std_io_save, session))
 			return (restore_std_io(&std_io_save), 0);
 	if (ft_strareeq(cmd->cmd_name, "exit"))
-	{
-		restore_std_io(&std_io_save);
-		add_history_to_histfile(session->history);
-	}
+		if (!prepare_to_exit(&std_io_save, session))
+			return (0);
 	call_builtin(cmd->cmd_name, cmd->cmd_args, session);
 	if (session->last_cmd_status < 0)
 		return (restore_std_io(&std_io_save), 0);
