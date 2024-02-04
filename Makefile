@@ -6,7 +6,7 @@
 #    By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/27 21:02:35 by ekhaled           #+#    #+#              #
-#    Updated: 2024/02/04 18:42:18 by ekhaled          ###   ########.fr        #
+#    Updated: 2024/02/04 21:19:42 by ekhaled          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -214,7 +214,7 @@ ${NAME}: ${OBJS}
 
 ${OBJ_DIR}/%.o: ${SRC_DIR}/%.c
 	${DIR_DUP}
-	${CC} ${CFLAGS} ${CPPFLAGS} -c -o $@ $< -gdwarf-4
+	${CC} ${CFLAGS} ${CPPFLAGS} -c -o $@ $<
 
 clean:
 	${RM} ${OBJ_DIR}
