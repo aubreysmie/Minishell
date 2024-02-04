@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 22:51:28 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/19 19:45:11 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/02/04 18:34:51 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,10 @@ bool	fill_leaf(t_token_queue **token_queue,
 	while ((*token_queue) && is_leaf_allowed_token((*token_queue)->token.type))
 	{
 		if (!update_cmd(token_queue, heredoc_queue, leaf, &next_redir_type))
-		{
-			free_cmd(&(*leaf)->cmd);
-			return (0);
-		}
+			return (free_cmd(&(*leaf)->cmd), 0);
 		if (!(*leaf))
 			return (1);
+		free(ft_queuepop(token_queue));
 	}
 	if (next_redir_type != (enum e_redir_type)(-1))
 	{

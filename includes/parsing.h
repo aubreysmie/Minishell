@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 14:28:10 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/02/04 15:39:33 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/02/04 18:31:52 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,7 +189,7 @@ bool				update_cmd(t_token_queue **token_queue,
 						t_token_queue **heredoc_queue,
 						t_node **leaf,
 						enum e_redir_type *next_redir_type);
-bool				try_to_update_redir_files(t_token_queue *token_el,
+bool				try_to_update_redir_files(t_token token,
 						t_token_queue **heredoc_queue,
 						t_node **leaf,
 						enum e_redir_type *next_redir_type);

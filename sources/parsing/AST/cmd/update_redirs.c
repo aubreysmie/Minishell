@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 05:59:47 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/19 20:15:04 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/02/04 18:31:53 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,19 +67,19 @@ bool	update_redir_files(t_token token, t_token_queue **heredoc_queue,
 	return (1);
 }
 
-bool	try_to_update_redir_files(t_token_queue *token_el,
+bool	try_to_update_redir_files(t_token token,
 			t_token_queue **heredoc_queue,
 				t_node **leaf, enum e_redir_type *redir_type)
 {
-	if (token_el->token.type != WORD_TOKEN)
+	if (token.type != WORD_TOKEN)
 	{
-		disp_token_error(token_el->token.type);
+		disp_token_error(token.type);
 		free_cmd(&(*leaf)->cmd);
 		free(*leaf);
 		*leaf = NULL;
 		return (1);
 	}
-	if (!update_redir_files(token_el->token, heredoc_queue,
+	if (!update_redir_files(token, heredoc_queue,
 			&(*leaf)->cmd, *redir_type))
 		return (0);
 	*redir_type = -1;
