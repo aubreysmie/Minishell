@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 22:01:51 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/29 12:17:07 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/02/04 19:26:46 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "session.h"
 
-void	ft_exit(char **argv, t_session *session);
+int		ft_exit(char **argv, t_session *session);
 int		ft_export(char **argv, char ***env_p);
 int		ft_env(char **argv, char ***env_p);
 int		ft_unset(char **argv, char ***env_p);
