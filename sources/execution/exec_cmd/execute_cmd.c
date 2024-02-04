@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 22:50:17 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/30 06:51:48 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/02/04 19:56:15 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ bool	execute_cmd(t_cmd *cmd, t_session *session)
 		return (restore_std_io(&std_io_save), 0);
 	if (cpid == 0)
 	{
+		init_signals_child();
 		close(std_io_save.rd_end);
 		close(std_io_save.wr_end);
 		execute_cmd_child(cmd, session);

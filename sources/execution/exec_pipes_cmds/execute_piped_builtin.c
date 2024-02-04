@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 08:35:41 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/30 06:51:43 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/02/04 19:56:24 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ bool	execute_last_piped_builtin(t_io_fd io_fd, t_cmd *cmd,
 		return (restore_std_io(&std_io_save), 0);
 	if (*cpid_p == 0)
 	{
+		init_signals_child();
 		close(std_io_save.rd_end);
 		close(std_io_save.wr_end);
 		execute_piped_builtin_child(io_fd, cmd, session);
@@ -70,6 +71,7 @@ bool	execute_piped_builtin(t_io_fd io_fd, t_cmd *cmd,
 		return (restore_std_io(&std_io_save), 0);
 	if (cpid == 0)
 	{
+		init_signals_child();
 		close(fd_to_close);
 		close(std_io_save.rd_end);
 		close(std_io_save.wr_end);

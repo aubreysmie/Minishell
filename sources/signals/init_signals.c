@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 13:22:35 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/31 00:04:38 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/02/04 19:55:13 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	handle_sigint(int sig)
 	rl_redisplay();
 }
 
-void	init_signals(void)
+void	init_signals_parent(void)
 {
 	struct sigaction	sa_int;
 	struct sigaction	sa_quit;
@@ -36,5 +36,15 @@ void	init_signals(void)
 	sa_int.sa_handler = &handle_sigint;
 	sa_quit.sa_handler = SIG_IGN;
 	sigaction(SIGINT, &sa_int, NULL);
+	sigaction(SIGQUIT, &sa_quit, NULL);
+}
+
+void	init_signals_child(void)
+{
+	struct sigaction	sa_quit;
+
+	sa_quit.sa_flags = SA_RESTART;
+	sigemptyset(&sa_quit.sa_mask);
+	sa_quit.sa_handler = SIG_DFL;
 	sigaction(SIGQUIT, &sa_quit, NULL);
 }
