@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 05:11:46 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/02/03 15:25:49 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/02/04 19:36:45 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,8 @@
 #include <dirent.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include <stdio.h>
 
-#include "utils.h"
-#include "parsing.h"
-
-#include "debug_colors.h"
+#include "minishell.h"
 
 bool	get_files_names(char ***dir_files_p)
 {
