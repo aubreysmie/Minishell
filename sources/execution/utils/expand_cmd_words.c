@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 04:59:16 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/30 23:23:17 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/02/04 16:27:12 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,24 +31,21 @@ bool	expand_heredoc(t_redir *input_redir, t_session *session)
 bool	check_expanded_redir(t_redir *redir, t_session *session,
 			int *new_exit_status_p)
 {
-	char	*temp;
+	char	**redir_exp;
 
-	temp = redir->file;
-	redir->file = expand_parameters(temp, session);
-	free(temp);
-	if (!redir->file)
+	redir_exp = apply_expansions(redir->file, session);
+	if (!redir_exp)
 		return (0);
-	temp = redir->file;
-	redir->file = remove_quotes(temp);
-	free(temp);
-	if (!redir->file)
-		return (0);
-	if (ft_charisinset(' ', redir->file)
-		|| ft_strlen(redir->file) == 0)
+	if (ft_stralen(redir_exp) != 1 || ft_strlen(redir_exp[0]) == 0)
 	{
 		disp_access_error(redir->file, NULL, "ambiguous redirect");
 		*new_exit_status_p = 1;
+		ft_strafree(redir_exp);
+		return (1);
 	}
+	free(redir->file);
+	redir->file = ft_strdup(redir_exp[0]);
+	ft_strafree(redir_exp);
 	return (1);
 }
 
