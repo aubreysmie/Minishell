@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 17:54:22 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/02/02 10:48:44 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/02/04 21:12:25 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,9 @@ void	get_to_word(char const *s, t_range_array *range_array,
 {
 	while (ft_charisinset(s[word_range->end], set)
 		&& is_accepted_del_index(word_range->end, *range_array))
-			word_range->end++;
-	update_range_offset(range_array, word_range->end - word_range->start);
+		word_range->end++;
+	if (word_range->end != word_range->start)
+		update_range_offset(range_array, word_range->end - word_range->start);
 	word_range->start = word_range->end;
 	while (s[word_range->start] != 0
 		&& !(ft_charisinset(s[word_range->start], set)
