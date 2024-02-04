@@ -6,7 +6,7 @@
 #    By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/27 21:02:35 by ekhaled           #+#    #+#              #
-#    Updated: 2024/01/31 11:41:19 by ekhaled          ###   ########.fr        #
+#    Updated: 2024/02/04 14:03:55 by ekhaled          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -96,14 +96,30 @@ SRCS_AST			:=	${addprefix cmd/, ${SRCS_CMD}} \
 						generate_ast.c \
 						init_node.c
 
+SRCS_EXP_UTILS		:=	ft_expstraadd.c \
+						ft_expstrafree.c \
+						ft_expstrajoin.c \
+						ft_expstrdup.c \
+						ft_rangeaadd.c \
+						ft_rangearraydup.c \
+						ft_splitset_unquoted_expansions.c \
+						is_accepted_del_index.c \
+						is_index_in_range.c \
+						stra_to_exp_stra.c \
+						update_range_offset.c
 SRCS_WILDCARDS		:=	are_patterns_found.c \
-						create_new_str.c \
+						create_new_stra.c \
 						find_asterisks.c \
 						is_matching_file.c \
 						is_pattern_in.c \
 						match_patterns.c
-SRCS_EXPANSION		:=	${addprefix wildcards/, ${SRCS_WILDCARDS}} \
+SRCS_EXPANSION		:=	${addprefix utils/, ${SRCS_EXP_UTILS}} \
+						${addprefix wildcards/, ${SRCS_WILDCARDS}} \
+						add_wildcards_exp.c \
+						apply_expansions.c \
+						expand_parameters_and_save_range.c \
 						expand_parameters.c \
+						remove_quotes_stra.c \
 						remove_quotes.c \
 						update_quoting.c
 

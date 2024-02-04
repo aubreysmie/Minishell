@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 05:11:46 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/30 23:08:37 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/02/03 15:25:49 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,28 +58,31 @@ bool	find_matching_files(char *str, char **dir_files, char ***matching_files)
 	while (dir_files[i])
 	{
 		if (is_matching_file(str, dir_files[i]))
-			if (!ft_straadd(matching_files, dir_files[i]))
+			if (!ft_straadd(matching_files, ft_strdup(dir_files[i])))
 				return (0);
 		i++;
 	}
 	return (1);
 }
 
-char	*match_patterns(char *str)
+char	**match_patterns(char *str)
 {
 	char	**dir_files;
 	char	**matching_files;
-	char	*new_str;
+	char	**expanded_stra;
 
 	if (!get_files_names(&dir_files))
-		return (ft_strdup(str));
+	{
+		matching_files = NULL;
+		return (create_new_stra(str, matching_files));
+	}
 	if (!find_matching_files(str, dir_files, &matching_files))
 	{
 		ft_strafree(dir_files);
 		return (NULL);
 	}
-	new_str = create_new_str(str, matching_files);
+	expanded_stra = create_new_stra(str, matching_files);
 	ft_strafree(dir_files);
-	free(matching_files);
-	return (new_str);
+	ft_strafree(matching_files);
+	return (expanded_stra);
 }

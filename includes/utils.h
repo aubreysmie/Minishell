@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 17:40:49 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/27 23:50:05 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/02/04 14:56:56 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ int				ft_strchri(const char *str, char c);
 char			*ft_strcpy(char *dest, const char *src);
 char			*ft_strdup(char *str);
 char			**ft_split(char const *s, char c);
+void			ft_free_words(char **res, unsigned int end);
+void			ft_fill_word(char *word, const char *s,
+					unsigned int start, unsigned int end);
 char			**ft_splitset(char const *s, char set[]);
 char			*ft_substrrange(char *buffer,
 					unsigned int start_index, unsigned int end_index);

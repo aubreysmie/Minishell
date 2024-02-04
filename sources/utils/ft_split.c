@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 23:18:16 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/21 00:29:43 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/02/02 08:19:34 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static unsigned int	ft_count_words(const char *s, char c)
 	return (len);
 }
 
-static void	ft_free_words(char **res, unsigned int end)
+void	ft_free_words(char **res, unsigned int end)
 {
 	unsigned int	i;
 
@@ -42,7 +42,7 @@ static void	ft_free_words(char **res, unsigned int end)
 	free(res);
 }
 
-static void	ft_fill_word(char *word, const char *s,
+void	ft_fill_word(char *word, const char *s,
 				unsigned int start, unsigned int end)
 {
 	unsigned int	i;

@@ -6,7 +6,7 @@
 /*   By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 14:28:10 by ekhaled           #+#    #+#             */
-/*   Updated: 2024/01/30 09:23:07 by ekhaled          ###   ########.fr       */
+/*   Updated: 2024/02/04 15:39:33 by ekhaled          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,34 @@ typedef struct s_node
 
 typedef t_node					*t_ast;
 
+/*-------- Expansions --------*/
+
+typedef struct s_range
+{
+	bool	is_quoted;
+	int		start;
+	int		end;
+}	t_range;
+
+typedef struct s_range_array
+{
+	t_range		*array;
+	int			len;
+}	t_range_array;
+
+typedef struct s_exp_str
+{
+	bool			is_expanded;
+	t_range_array	range_array;
+	char			*str;
+}	t_exp_str;
+
+typedef struct s_exp_str_array
+{
+	t_exp_str	*array;
+	int			len;
+}	t_exp_str_array;
+
 bool				create_pipe_sub_tree(t_cstr *input,
 						t_token_queue **token_queue,
 						t_token_queue **heredoc_queue,
@@ -210,10 +238,58 @@ bool				generate_ast(t_cstr *input,
 bool				init_node(t_node **node);
 void				free_ast(t_ast ast);
 
-void				update_quoting(t_quotes *quotes, char *str, int i);
+void				update_quoting(t_quotes *quotes,
+						char *str,
+						int i);
 
-char				*expand_parameters(char *str, t_session *session);
-char				*match_patterns(char *str);
+char				**apply_expansions(char *str,
+						t_session *session);
+
+bool				ft_expstraadd(t_exp_str_array *exp_str_array,
+						t_exp_str new_exp_str);
+bool				ft_rangeaadd(t_range_array *range_array,
+						t_range new_range);
+bool				add_wildcards_exp(t_exp_str_array *exp_str_array);
+bool				ft_expstrajoin(t_exp_str_array *exp_str_array1,
+						t_exp_str_array *exp_str_array2);
+t_range_array		ft_rangearraydup(t_range_array range_array);
+t_exp_str			ft_expstrdup(t_exp_str exp_str);
+void				ft_expstrafree(t_exp_str_array exp_str_array);
+char				**ft_splitset_unquoted_expansions(char const *s,
+						t_range_array *range_array,
+						char set[]);
+bool				is_accepted_del_index(int index_candidate,
+						t_range_array range_array);
+bool				is_index_in_range(int index,
+						t_range_array *range_array,
+						bool *is_quoted);
+bool				stra_to_exp_stra(char **str_array,
+						t_range_array *range_array,
+						t_exp_str_array *exp_str_array);
+void				update_range_offset(t_range_array *range_array,
+						int offset);
+char				**remove_quotes_stra(t_exp_str_array exp_str_array);
+
+bool				append_between_vars_str(char **expanded_str_p,
+						char *str,
+						int var_end,
+						int i);
+char				*find_variable_value(t_lstr name,
+						t_session *session);
+bool				append_last_cmd_status(char **expanded_str_p,
+						int *i_p,
+						int last_cmd_status);
+bool				append_var_str(char **expanded_str_p,
+						char *str,
+						int *i_p,
+						t_session *session);
+
+bool				expand_parameters_and_save_range(char *str,
+						t_session *session,
+						t_exp_str *exp_str);
+char				*expand_parameters(char *str,
+						t_session *session);
+char				**match_patterns(char *str);
 char				*remove_quotes(char *str);
 
 bool				is_matching_file(char *str,
@@ -229,7 +305,7 @@ bool				is_pattern_in(char *matching_leftover_str,
 						int pattern_start,
 						int pattern_end,
 						t_lstr *available_file);
-char				*create_new_str(char *str,
+char				**create_new_stra(char *str,
 						char **matching_files);
 
 t_token_queue		*ft_queuenew(t_token content);
