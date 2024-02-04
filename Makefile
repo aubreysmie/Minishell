@@ -6,7 +6,7 @@
 #    By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/27 21:02:35 by ekhaled           #+#    #+#              #
-#    Updated: 2024/02/04 14:03:55 by ekhaled          ###   ########.fr        #
+#    Updated: 2024/02/04 18:42:18 by ekhaled          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -202,7 +202,7 @@ CFLAGS				:=	-Wall -Wextra -Werror
 CPPFLAGS			:=	-I includes
 
 
-RM					:=	${RM} -rf
+RM					:=	${RM} -r
 DIR_DUP				=	mkdir -p ${@D}
 
 
