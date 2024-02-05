@@ -6,7 +6,7 @@
 #    By: ekhaled <ekhaled@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/27 21:02:35 by ekhaled           #+#    #+#              #
-#    Updated: 2024/02/04 21:19:42 by ekhaled          ###   ########.fr        #
+#    Updated: 2024/02/05 11:01:40 by ekhaled          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -124,7 +124,6 @@ SRCS_EXPANSION		:=	${addprefix utils/, ${SRCS_EXP_UTILS}} \
 						update_quoting.c
 
 SRCS_QUEUE			:=	ft_queuefree.c \
-						ft_queuefreeall.c \
 						ft_queuelast.c \
 						ft_queuelen.c \
 						ft_queuenew.c \
